@@ -1,5 +1,5 @@
 /* Table whose tuples represent an user */
-CREATE TABLE user (
+CREATE TABLE standard_user (
 	user_id SERIAL, /* autoincremented id */
 	name varchar(20) NOT NULL, /* name of the user */
 	surname varchar(20) NOT NULL, /* surname of the user */
@@ -21,7 +21,7 @@ CREATE TABLE email (
 	email varchar (40) NOT NULL CHECK (email ~* '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$'), /*mail address. Constraints check the string against a regex matching: one or more alphanumeric characters or special symbols, followed by an “at”, followed by one or more alphanumeric character, followed by a point and one or more alphanumeric characters. The regex expresses the usual structure of a mail, in the form “username@domainname.topleveldomain*/ 
 	user_id integer NOT NULL,
 	PRIMARY KEY(email),
-	FOREIGN KEY(user_id) REFERENCES user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
+	FOREIGN KEY(user_id) REFERENCES standard_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /* Table whose tuples represent phone contact */
@@ -29,7 +29,7 @@ CREATE TABLE phone (
 	phone_number varchar (25) NOT NULL, /* string representing a phone number. Cannot be an integer for two main reasons: first some numbers have a 0 as prefix that would be dropped, and second many numbers would correspond to integers that are too large and would cause an overflow */ 
 	user_id integer NOT NULL,
 	PRIMARY KEY(phone_number),
-	FOREIGN KEY(user_id) REFERENCES user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
+	FOREIGN KEY(user_id) REFERENCES standard_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /* Table whose tuples represent an ad (published or requested) */
