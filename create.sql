@@ -1,0 +1,1 @@
+/* Table whose tuples represent an user */
