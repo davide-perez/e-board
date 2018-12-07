@@ -55,3 +55,23 @@ CREATE TABLE image (
 );
 
 
+/* VIEWS */
+CREATE VIEW ad_checker AS
+    SELECT 
+        *
+    FROM
+        ad
+    WHERE
+        status > 0 and status < 5
+WITH CHECK OPTION;
+
+CREATE VIEW image_checker AS
+    SELECT 
+        *
+    FROM
+        image
+    WHERE
+        image_only = 0 or image_only = 1
+WITH CHECK OPTION;
+
+
