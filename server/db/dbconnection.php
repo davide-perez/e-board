@@ -1,6 +1,5 @@
 <?php
 
-	require "dbexception.php";
 	/**
 	 * This class is responsible to set up a PERSISTENT database connection. Credentials are read from a config file.
 	 */
@@ -24,7 +23,7 @@
 			$password = $this -> credentials["password"];
 			$database = $this -> credentials["database"];
 
-			$this -> connection = pg_pconnect("host=$host dbname=$database user=$user password=$password");
+			$this -> connection = mysqli_connect("host=$host dbname=$database user=$user password=$password");
 
 			if ($this -> connection == null){
 
@@ -59,7 +58,7 @@
 
 			if($this -> open){
 
-				if(pg_close($this->connection)){
+				if(mysqli_close($this->connection)){
 					$this -> open = false;
 					$this -> end_time = date("m/d/Y h:i:s a");
 					//log this
@@ -82,32 +81,15 @@
 
 
 
-		private function is_open(){
+		public function is_open(){
 
 			return ($this -> open) == true;
 
 		}
 
 
-
-		public function is_valid(){
-
-			$status = pg_connection_status($this -> connection);
-			if($status == PGSQL_CONNECTION_OK and $this -> is_open()){
-				return true;
-			}
-			else{
-				return false;
-			}
-
-		}
-
-
-
-		public function is_busy(){
-
-			return pg_connection_busy($this -> connection);
-
+		public function get_socket(){
+			return $this -> connection;
 		}
 
 	}

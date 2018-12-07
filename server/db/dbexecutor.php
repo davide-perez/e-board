@@ -1,6 +1,4 @@
-<?php
-
-	require "dbconnection.php";
+ <?php
 	
 	/**
 	 * 
@@ -13,22 +11,23 @@
 
 			if(!isset($conn) or !$conn -> is_open()){
 
-				throw new DatabaseException("Invalid database connection!");
+				//throw new DatabaseException("Invalid database connection!");
 
 			}
 
 
-			$this -> connection = $conn;
+			$this -> connection = $conn -> get_socket();
 
 			
 		}
 
 
-		public function query($query, $params){
 
-			return pg_query_params($this -> connection, $query, $params);
+		public function unsafe_query($query){
+			return mysqli_query($this -> connection, $query);
 
 		}
+
 
 
 		public function transaction($queries, $params){
@@ -38,7 +37,7 @@
 				echo "Transaction started";
 			}
 			else{
-				throw new DatabaseException("failed to start transaction");
+				//throw new DatabaseException("failed to start transaction");
 			}
 
 			$result = $this -> query($queries, $params);
@@ -51,7 +50,7 @@
 				}
 				else{
 
-					throw new DatabaseException("failed to commit a transaction.");
+					//throw new DatabaseException("failed to commit a transaction.");
 			
 				}
 			}
@@ -66,7 +65,7 @@
 				}
 				else{
 
-					throw new DatabaseException("Failed to roll back a transaction.");
+					//throw new DatabaseException("Failed to roll back a transaction.");
 
 				}
 
