@@ -1,6 +1,5 @@
 <?php
 
-	require "dbexception.php";
 	/**
 	 * This class is responsible to set up a PERSISTENT database connection. Credentials are read from a config file.
 	 */
