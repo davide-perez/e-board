@@ -1,9 +1,7 @@
 <?php
 
-require "dbconnection.php";
-require "dbexecutor.php";
+require "dbconnfactory.php";
 
-	$db = new DatabaseConnection();
-	$exec = new QueryExecutor($db);
-
+	$db = new ConnectionFactory();
+	$exec = $db -> get_connection();
 ?>
