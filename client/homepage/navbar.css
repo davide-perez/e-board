@@ -1,24 +1,11 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: white;
+
+.navbar-default .navbar-brand {
+    padding-top: 0px;
 }
 
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 26px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: blue;
+/* Border effect. In order to see this, add the id "border" to the div component */
+.navbar-default .navbar-nav>li>a:hover
+{
+        box-shadow: inset 0 -5px 2px -2px #53a7ea;
+       
 }
