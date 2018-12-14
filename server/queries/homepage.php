@@ -32,7 +32,12 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	function create_obj($res){
 		//add option to truncate the description if longer than x chars, adding ... at the end (blablablabla...)
 
-		 return array("title" => $res[0], "description" => $res[1], "image" => $res[2]);
+		$description = $res[1];
+		if(strlen($description) > 50){
+			$description = substr($description, 0, 47) . "...";
+		}
+
+		 return array("title" => $res[0], "description" => $description, "image" => $res[2]);
 
 	}
 
