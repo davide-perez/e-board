@@ -18,6 +18,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		array_push($data, $obj);
 	}
 
+
 	echo json_encode($data);
 
 
@@ -25,8 +26,11 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 
 
 
-
+	/**
+	* Creates an array representing the object that will be read
+	*/
 	function create_obj($res){
+		//add option to truncate the description if longer than x chars, adding ... at the end (blablablabla...)
 
 		 return array("title" => $res[0], "description" => $res[1], "image" => $res[2]);
 

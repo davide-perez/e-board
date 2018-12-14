@@ -1,7 +1,7 @@
 
 //Fetches content for the coverflow
 // look https://stackoverflow.com/questions/40354638/ajax-to-get-image-from-remote-server for get images from link
-function fetch(){
+/*function fetch(){
 
 	$.ajax({
 				url: '/eboard/eboard/server/queries/homepage.php',
@@ -15,7 +15,7 @@ function fetch(){
 
 		});
 }
-
+*/
 
 
 /**
