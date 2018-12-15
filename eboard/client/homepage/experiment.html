@@ -20,7 +20,9 @@
 </head>
 
 <body>
-      <!-- Static navbar -->
+      <div id="container">
+        <div id="header">
+          <!-- Categories navbar -->
       <nav class="navbar navbar-default">
 
         <div class="container-fluid">
@@ -37,7 +39,11 @@
             </button>
 
             <a class="navbar-brand" href="#">
+              <span>
                <img src="../assets/images/logo.png" height = "50px" alt="">
+               Hello, visitor!
+             </span>
+             
             </a>
 
           </div>
@@ -47,37 +53,21 @@
             <ul class="nav navbar-nav">
 
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">For rent</a></li>
-              <li><a href="#">Jobs</a></li>
-              <li><a href="#">Items for sale</a></li>
-              <li><a href="#">Events</a></li>
-              <li><a href="#">Private lectures</a></li>
-              <li><a href="#">T-rex</a></li>
-              <li><a href="#">Other</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Register</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">About</a></li>
 
             </ul>
-
-             <div class="col-sm-3 col-md-3 pull-right">
-
-        		<form class="navbar-form" role="search">
-        		<div class="input-group">
-            	<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-            	<div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-
-            </div>
-            
-        </div>
-        </form>
-        </div>
             
           </div><!--/.nav-collapse -->
 
         </div><!--/.container-fluid -->
 
       </nav>
-
-    <div class="container_fluid">
+        </div>
+        <div id="body">
+          <div class="container_fluid">
       <div class="login-form">
         <div class="main-div">
           <div class="panel">
@@ -101,6 +91,63 @@
         </div>
       </div>
     </div>
+  </div>
+        </div>
+        <div id="footer">
+          <!-- Categories navbar -->
+      <nav class="navbar navbar-default">
+
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+
+            </button>
+
+          </div>
+
+          <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav">
+
+              <li><a href="#">Newest</a></li>
+              <li><a href="#">For rent</a></li>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Items for sale</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Lectures</a></li>
+              <li><a href="#">Other</a></li>
+
+            </ul>
+
+             <div class="col-sm-3 col-md-3 pull-right">
+
+            <form class="navbar-form" role="search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+
+            </div>
+            
+        </div>
+        </form>
+        </div>
+            
+          </div><!--/.nav-collapse -->
+
+        </div><!--/.container-fluid -->
+
+      </nav>
+        </div>
+      </div>
+
   </div>
 
 
