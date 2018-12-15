@@ -1,3 +1,3 @@
 # e-board
-E-board service
-Test
+E-board has been designed to be a substitution of the many bullettin boards of our university. Despite their popularity and the fact that it is a service accessible also by people outside the university, such boards have not been computerised yet, and the process of approving the ads, post them and remove them when they are out-of-date is still done by hand. This makes the whole service not very organized and sometimes quite chaotic. In our intentions, this website will solve such problems, hosting all the advertisements in a unique place while organizing them efficiently and automatically handling the outdated ads and the obsolete ones.
+Similarly to the "concrete" bullettin board, this should be a university service while remaining open to public use.
