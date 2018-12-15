@@ -1,0 +1,32 @@
+
+.navbar-default .navbar-brand {
+    padding-top: 0px;
+}
+
+/* Border effect. In order to see this, add the id "border" to the div component */
+.navbar-default .navbar-nav>li>a:hover
+{
+        box-shadow: inset 0 -5px 2px -2px #53a7ea;
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+}
+#body {
+   padding-bottom:60px;   /* Height of the footer */
+}
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+}
