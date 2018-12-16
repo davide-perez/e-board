@@ -1,25 +1,11 @@
-<!-- 
-  
-  Structure suggested:
-
-  BAR WITH LOGO, LOGIN, ETC
-  coverflow
-  BAR WITH CATEGORIES
-
--->
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
   <meta charset="UTF-8">
-
   <title>E-Board</title>
-
-  <!--Script import -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <!-- Optional theme -->
@@ -28,93 +14,88 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <!-- Coverflow source -->
-  <script src="../assets/js/coverflow/coverflow.js"></script>
-  <link rel="stylesheet" href="../assets/js/coverflow/coverflow.css">
 
-  <!-- custom scripts -->
-  <script src="/eboard/eboard/client/assets/js/homepage_fetch.js"></script>
-
-
-	<link href="navbar.css" rel="stylesheet" type="text/css">
+	<link href="mystyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
+  <!-- Main container-->
+  <div id="container">
 
-  <script>
-
-    $(document).ready(function(){
-
-      setup("player");
-
-    });
-
-  </script>
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div id="container">
-        <div id="header">
-          <!-- Categories navbar -->
+    <!-- HEADER-->
+    <div id="header">
+    <!-- Categories navbar -->
       <nav class="navbar navbar-default">
 
-        <div class="container-fluid">
+      <div class="container-fluid">
 
-          <div class="navbar-header">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
 
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+          </button>
 
-            </button>
-
-            <a class="navbar-brand" href="#">
-              <span>
-               <img src="../assets/images/logo.png" height = "50px" alt="">
-               Hello, visitor!
-             </span>
+          <a class="navbar-brand" href="#">
+          <span>
+            <img src="../assets/images/logo.png" height = "50px" alt="">
+            Hello, visitor!
+          </span>
              
-            </a>
+          </a>
 
-          </div>
+        </div>
 
-          <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse">
 
-            <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav">
 
-              <li class="active"><a href="#">E-Board</a></li>
-              <li><a href="../homepage/login.html">Login</a></li>
-              <li><a href="#">Register</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">About</a></li>
+            <li><a href="../homepage/homepage.html">E-Board</a></li>
+            <li class="active"><a href="#">Login</a></li>
+            <li><a href="../homepage/registration.html">Register</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">About</a></li>
 
-            </ul>
+          </ul>
             
-          </div><!--/.nav-collapse -->
+        </div><!--/.nav-collapse -->
 
-        </div><!--/.container-fluid -->
-
+      </div><!--/.container-fluid -->
       </nav>
+    </div>
+
+    <!-- MIDDLE -->
+    <div id="middle">
+      <div class="container_fluid">
+        <div class="login-form">
+          <div class="main-div">
+            <div class="panel">
+              <h2>Login</h2>
+              <p>Please enter your username and password</p>
+            </div>
+            <form id="Login">
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+            <div class="newUser">
+              <a href="../homepage/registration.html">Click here to register</a>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+          </div>
         </div>
-        <div id="body">
-          <div id="player"></div>
-        </div>
+      </div>
+    </div>
+        
         <div id="footer">
           <!-- Categories navbar -->
       <nav class="navbar navbar-default">
@@ -138,7 +119,7 @@
 
             <ul class="nav navbar-nav">
 
-              <li class="active"><a href="#">Newest</a></li>
+              <li><a href="#">Newest</a></li>
               <li><a href="#">For rent</a></li>
               <li><a href="#">Jobs</a></li>
               <li><a href="#">Items for sale</a></li>
@@ -169,6 +150,12 @@
       </nav>
         </div>
       </div>
+
+  </div>
+
+
+  
+
 
 </body>
 

@@ -15,84 +15,109 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-	<link href="mystyle.css" rel="stylesheet" type="text/css">
+	<link href="registerStyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
-      <div id="container">
-        <div id="header">
-          <!-- Categories navbar -->
+  <!-- Main container-->
+  <div id="container">
+
+    <!-- HEADER-->
+    <div id="header">
+    <!-- Categories navbar -->
       <nav class="navbar navbar-default">
 
-        <div class="container-fluid">
+      <div class="container-fluid">
 
-          <div class="navbar-header">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
 
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+          </button>
 
-            </button>
-
-            <a class="navbar-brand" href="#">
-              <span>
-               <img src="../assets/images/logo.png" height = "50px" alt="">
-               Hello, visitor!
-             </span>
+          <a class="navbar-brand" href="#">
+          <span>
+            <img src="../assets/images/logo.png" height = "50px" alt="">
+            Hello, visitor!
+          </span>
              
-            </a>
+          </a>
 
-          </div>
-
-          <div id="navbar" class="navbar-collapse collapse">
-
-            <ul class="nav navbar-nav">
-
-              <li><a href="../homepage/homepage.html">Home</a></li>
-              <li class="active"><a href="#">Login</a></li>
-              <li><a href="#">Register</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">About</a></li>
-
-            </ul>
-            
-          </div><!--/.nav-collapse -->
-
-        </div><!--/.container-fluid -->
-
-      </nav>
         </div>
-        <div id="body">
-          <div class="container_fluid">
-      <div class="login-form">
-        <div class="main-div">
-          <div class="panel">
-            <h2>Login</h2>
-            <p>Please enter your username and password</p>
-          </div>
-          <form id="Login">
+
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav">
+
+            <li><a href="../homepage/homepage.html">E-Board</a></li>
+            <li><a href="../homepage/login.html">Login</a></li>
+            <li class="active"><a href="#">Register</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">About</a></li>
+
+          </ul>
+            
+        </div><!--/.nav-collapse -->
+
+      </div><!--/.container-fluid -->
+      </nav>
+    </div>
+
+    <!-- MIDDLE -->
+    <div id="middle">
+      <div class="container_fluid">
+        <div class="login-form">
+          <div class="main-div">
+            <div class="panel">
+              <h2>Register</h2>
+              <p>Please enter your personal information<br>You must be registered to post an ad</p>
+
+            </div>
+            <form id="Login">
+
+            <div class = "row">
+              <div class="form-group col-xs-6">
+                <input type="text" class="form-control" id="inputName" placeholder="Name">
+              </div>
+
+              <div class="form-group col-xs-6">
+                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+            </div>
 
             <div class="form-group">
               <input type="text" class="form-control" id="inputUsername" placeholder="Username">
             </div>
 
-            <div class="form-group">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            <div class = "row">
+              <div class="form-group col-xs-6">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+
+              <div class="form-group col-xs-6">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Repeat Password">
+              </div>
             </div>
+
             <div class="newUser">
-              <a href="">Click here to register</a>
+              <a href="../homepage/login.html">Click here to login</a>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-          </form>
+            <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-        </div>
+        
         <div id="footer">
           <!-- Categories navbar -->
       <nav class="navbar navbar-default">
