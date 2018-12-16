@@ -15,7 +15,9 @@
 	background-repeat:no-repeat; 
 	background-position:center; 
 	background-size:cover; 
-	padding:100px;}
+	padding:100px;
+  height:90vh;
+  }
 
 .form-heading { color:#fff; font-size:23px;}
 .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
@@ -74,9 +76,11 @@ body {
    position:relative;
 }
 #header {
+  height:50px;
 }
 #body {
-   padding-bottom:50px;   /* Height of the footer */
+  height:100%;
+  padding-top: 0;
 }
 #footer {
    position:absolute;
