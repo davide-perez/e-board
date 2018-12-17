@@ -22,18 +22,18 @@
 * Sets up the coverflow component.
 */
 function setup(id){
-	console.log("Setting up player...");
+	console.log("Setting up player2...");
 
 	coverflow(id).setup({
 
         flash: "/eboard/eboard/client/assets/js/coverflow/coverflow.swf",
         playlist: "/eboard/eboard/server/queries/homepage.php",
         width: '100%',
-        height: 250,
+        height: 600,
         y: -20,
         backgroundcolor: "ffffff",
-        coverwidth: 180,
-        coverheight: 150,
+        coverwidth: 460,
+        coverheight: 400,
         fixedsize: true,
         textoffset: 50,
         textstyle: ".coverflow-text{color:#000000;text-align:center;font-family:Arial Rounded MT Bold,Arial;} .coverflow-text h1{font-size:14px;font-family:inherit;font-weight:normal;line-height:21px;} .coverflow-text h2{font-size:12px;font-family:inherit;font-weight:normal;} .coverflow-text a{color:#0000EE;}"

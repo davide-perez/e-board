@@ -40,26 +40,47 @@
 
           </button>
 
-          <a class="navbar-brand" href="#">
+          <div class="navbar-brand">
           <span>
             <img src="../assets/images/logo.png" height = "50px" alt="">
-            Hello, visitor!
           </span>
              
-          </a>
+          </div>
 
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
 
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-left">
 
             <li><a href="../homepage/homepage.html">E-Board</a></li>
             <li><a href="../homepage/login.html">Login</a></li>
-            <li class="active"><a href="#">Register</a></li>
-            <li><a href="#">Help</a></li>
+            <li class = "active"><a href="">Register</a></li>
             <li><a href="#">About</a></li>
 
+
+          </ul>
+
+
+          <div class="col-sm-3 col-md-3">
+
+            <form class="navbar-form" role="search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+
+            </div>
+            
+        </div>
+        </form>
+        </div>
+
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             
         </div><!--/.nav-collapse -->
@@ -74,8 +95,8 @@
         <div class="login-form">
           <div class="main-div">
             <div class="panel">
-              <h2>Register</h2>
-              <p>Please enter your personal information<br>You must be registered to post an ad</p>
+              <h2><span class="glyphicon glyphicon-user"></span> Register</h2>
+              <p>Please enter your personal information</p>
 
             </div>
             <form id="Login">
@@ -139,31 +160,25 @@
 
           <div id="navbar" class="navbar-collapse collapse">
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" style = "width:100%">
 
-              <li><a href="#">Newest</a></li>
-              <li><a href="#">For rent</a></li>
-              <li><a href="#">Jobs</a></li>
-              <li><a href="#">Items for sale</a></li>
-              <li><a href="#">Events</a></li>
-              <li><a href="#">Lectures</a></li>
-              <li><a href="#">Other</a></li>
+              <li style="width: 14%; text-align: center"><a href="../homepage/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li class="divider-vertical"></li>
+              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
+              <li class="divider-vertical"></li>
+              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class="divider-vertical"></li>
+              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
+              <li class="divider-vertical"></li>
+              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-globe"></span> Events</a></li>
+              <li class="divider-vertical"></li>
+              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-book"></span> Lectures</a></li>
+              <li class="divider-vertical"></li>
+              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-th"></span> Other</a></li>
 
             </ul>
 
-             <div class="col-sm-3 col-md-3 pull-right">
-
-            <form class="navbar-form" role="search">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-
-            </div>
-            
-        </div>
-        </form>
-        </div>
+             
             
           </div><!--/.nav-collapse -->
 
