@@ -1,0 +1,19 @@
+
+
+.container_fluid{ 
+
+	padding-top:3%;
+  padding-bottom: 4%;
+  height:100%;
+  }
+
+
+  #middle {
+  height:100%;  
+   padding-bottom:50px; /* Height of the footer */
+   background-image:url("/eboard/eboard/public/assets/images/register.jpg"); 
+  background-repeat:no-repeat; 
+  background-position:center; 
+  background-size:cover; 
+}
+

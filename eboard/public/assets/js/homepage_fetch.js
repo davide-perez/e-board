@@ -26,7 +26,7 @@ function setup(id){
 
 	coverflow(id).setup({
 
-        flash: "/eboard/eboard/client/assets/js/coverflow/coverflow.swf",
+        flash: "/eboard/eboard/public/assets/js/lib/coverflow/coverflow.swf",
         playlist: "/eboard/eboard/server/queries/homepage.php",
         width: '100%',
         height: 600,

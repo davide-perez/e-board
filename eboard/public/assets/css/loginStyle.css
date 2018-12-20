@@ -1,0 +1,15 @@
+
+.container_fluid{ 
+  
+  padding:7%;
+  height:100%;
+  }
+  
+ #middle {
+  height:100%;  
+   padding-bottom:50px; /* Height of the footer */
+   background-image:url("/eboard/eboard/public/assets/images/pencil.jpg"); 
+  background-repeat:no-repeat; 
+  background-position:center; 
+  background-size:cover; 
+}

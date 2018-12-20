@@ -1,11 +1,25 @@
+<!-- 
+  
+  Structure suggested:
+
+  BAR WITH LOGO, LOGIN, ETC
+  coverflow
+  BAR WITH CATEGORIES
+
+-->
+
 <!DOCTYPE html>
 <html>
 
 <head>
 
   <meta charset="UTF-8">
+
   <title>E-Board</title>
+
+  <!--Script import -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <!-- Optional theme -->
@@ -14,16 +28,33 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+  <!-- Coverflow source -->
+  <script src="/eboard/eboard/public/assets/js/lib/coverflow/coverflow.js"></script>
+  <link rel="stylesheet" href="/eboard/eboard/public/assets/js/lib/coverflow/coverflow.css">
 
-	<link href="mystyle.css" rel="stylesheet" type="text/css">
+  <!-- custom scripts -->
+  <script src="/eboard/eboard/public/assets/js/homepage_fetch.js"></script>
+
+
+	<link href="/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
+  <link href="/eboard/eboard/public/assets/css/homepageStyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
-  <!-- Main container-->
-  <div id="container">
 
-    <!-- HEADER-->
+  <script>
+
+    $(document).ready(function(){
+
+      setup("player");
+
+    });
+
+  </script>
+
+      <div id="container">
+        <!-- HEADER-->
     <div id="header">
     <!-- Categories navbar -->
       <nav class="navbar navbar-default">
@@ -42,7 +73,7 @@
 
           <div class="navbar-brand">
           <span>
-            <img src="../assets/images/logo.png" height = "50px" alt="">
+            <img src="/eboard/eboard/public/assets/images/logo.png" height = "50px" alt="">
           </span>
              
           </div>
@@ -53,9 +84,9 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li><a href="../homepage/homepage.html">E-Board</a></li>
-            <li class="active"><a href="#">Login</a></li>
-            <li><a href="../homepage/registration.html">Register</a></li>
+            <li class = "active"><a href="">E-Board</a></li>
+            <li><a href="/eboard/eboard/public/login.html">Login</a></li>
+            <li><a href="/eboard/eboard/public/registration.html">Register</a></li>
             <li><a href="#">About</a></li>
 
 
@@ -88,35 +119,9 @@
       </div><!--/.container-fluid -->
       </nav>
     </div>
-
-    <!-- MIDDLE -->
-    <div id="middle">
-      <div class="container_fluid">
-        <div class="login-form">
-          <div class="main-div">
-            <div class="panel">
-              <h2><span class="glyphicon glyphicon-log-in"></span> Login</h2>
-              <p>Please enter your username and password</p>
-            </div>
-            <form id="Login">
-
-            <div class="form-group">
-              <input type="text" class="form-control" id="inputUsername" placeholder="Username">
-            </div>
-
-            <div class="form-group">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-            <div class="newUser">
-              <a href="../homepage/registration.html">Click here to register</a>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-          </div>
+        <div id="middle">
+          <div id="player"></div>
         </div>
-      </div>
-    </div>
-        
         <div id="footer">
           <!-- Categories navbar -->
       <nav class="navbar navbar-default">
@@ -140,7 +145,7 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li style="width: 14%; text-align: center"><a href="../homepage/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li class = "active" style="width: 14%; text-align: center"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
@@ -165,12 +170,6 @@
       </nav>
         </div>
       </div>
-
-  </div>
-
-
-  
-
 
 </body>
 

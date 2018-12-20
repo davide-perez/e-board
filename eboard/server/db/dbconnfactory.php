@@ -47,7 +47,7 @@
 
 		private function read_config(){
 
-			return parse_ini_file("config.ini");
+			return parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/config.ini");
 
 		}
 

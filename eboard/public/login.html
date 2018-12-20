@@ -15,7 +15,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-	<link href="registerStyle.css" rel="stylesheet" type="text/css">
+	<link href="/eboard/eboard/public/assets/css/mystyle.css" rel="stylesheet" type="text/css">
+  <link href="/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
+  <link href="/eboard/eboard/public/assets/css/loginStyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -42,7 +44,7 @@
 
           <div class="navbar-brand">
           <span>
-            <img src="../assets/images/logo.png" height = "50px" alt="">
+            <img src="/eboard/eboard/public/assets/images/logo.png" height = "50px" alt="">
           </span>
              
           </div>
@@ -53,9 +55,9 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li><a href="../homepage/homepage.html">E-Board</a></li>
-            <li><a href="../homepage/login.html">Login</a></li>
-            <li class = "active"><a href="">Register</a></li>
+            <li><a href="/eboard/eboard/public/homepage.html">E-Board</a></li>
+            <li class="active"><a href="#">Login</a></li>
+            <li><a href="/eboard/eboard/public/registration.html">Register</a></li>
             <li><a href="#">About</a></li>
 
 
@@ -95,44 +97,22 @@
         <div class="login-form">
           <div class="main-div">
             <div class="panel">
-              <h2><span class="glyphicon glyphicon-user"></span> Register</h2>
-              <p>Please enter your personal information</p>
-
+              <h2><span class="glyphicon glyphicon-log-in"></span> Login</h2>
+              <p>Please enter your username and password</p>
             </div>
             <form id="Login">
-
-            <div class = "row">
-              <div class="form-group col-xs-6">
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
-              </div>
-
-              <div class="form-group col-xs-6">
-                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
-            </div>
 
             <div class="form-group">
               <input type="text" class="form-control" id="inputUsername" placeholder="Username">
             </div>
 
-            <div class = "row">
-              <div class="form-group col-xs-6">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-              </div>
-
-              <div class="form-group col-xs-6">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Repeat Password">
-              </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
-
             <div class="newUser">
-              <a href="../homepage/login.html">Click here to login</a>
+              <a href="/eboard/eboard/public/registration.html">Click here to register</a>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">Login</button>
             </form>
           </div>
         </div>
@@ -162,11 +142,11 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li style="width: 14%; text-align: center"><a href="../homepage/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li style="width: 14%; text-align: center"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li style="width: 14%; text-align: center""><a href="../homepage/prova.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>

@@ -1,25 +1,11 @@
-<!-- 
-  
-  Structure suggested:
-
-  BAR WITH LOGO, LOGIN, ETC
-  coverflow
-  BAR WITH CATEGORIES
-
--->
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
   <meta charset="UTF-8">
-
   <title>E-Board</title>
-
-  <!--Script import -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <!-- Optional theme -->
@@ -28,32 +14,17 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <!-- Coverflow source -->
-  <script src="../assets/js/coverflow/coverflow.js"></script>
-  <link rel="stylesheet" href="../assets/js/coverflow/coverflow.css">
-
-  <!-- custom scripts -->
-  <script src="/eboard/eboard/client/assets/js/homepage_fetch.js"></script>
-
-
-	<link href="navbar.css" rel="stylesheet" type="text/css">
+  <link href="/eboard/eboard/public/assets/css/mystyle.css" rel="stylesheet" type="text/css">
+  <link href="/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
+	<link href="/eboard/eboard/public/assets/css/registerStyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
+  <!-- Main container-->
+  <div id="container">
 
-  <script>
-
-    $(document).ready(function(){
-
-      setup("player");
-
-    });
-
-  </script>
-
-      <div id="container">
-        <!-- HEADER-->
+    <!-- HEADER-->
     <div id="header">
     <!-- Categories navbar -->
       <nav class="navbar navbar-default">
@@ -72,7 +43,7 @@
 
           <div class="navbar-brand">
           <span>
-            <img src="../assets/images/logo.png" height = "50px" alt="">
+            <img src="/eboard/eboard/public/assets/images/logo.png" height = "50px" alt="">
           </span>
              
           </div>
@@ -83,9 +54,9 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li class = "active"><a href="">E-Board</a></li>
-            <li><a href="../homepage/login.html">Login</a></li>
-            <li><a href="../homepage/registration.html">Register</a></li>
+            <li><a href="/eboard/eboard/public/homepage.html">E-Board</a></li>
+            <li><a href="/eboard/eboard/public/login.html">Login</a></li>
+            <li class = "active"><a href="">Register</a></li>
             <li><a href="#">About</a></li>
 
 
@@ -118,9 +89,57 @@
       </div><!--/.container-fluid -->
       </nav>
     </div>
-        <div id="middle">
-          <div id="player"></div>
+
+    <!-- MIDDLE -->
+    <div id="middle">
+      <div class="container_fluid">
+        <div class="login-form">
+          <div class="main-div">
+            <div class="panel">
+              <h2><span class="glyphicon glyphicon-user"></span> Register</h2>
+              <p>Please enter your personal information</p>
+
+            </div>
+            <form id="Login">
+
+            <div class = "row">
+              <div class="form-group col-xs-12 col-md-6">
+                <input type="text" class="form-control" id="inputName" placeholder="Name">
+              </div>
+
+              <div class="form-group col-xs-12 col-md-6">
+                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+            </div>
+
+            <div class = "row">
+              <div class="form-group col-xs-12 col-md-6">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+
+              <div class="form-group col-xs-12 col-md-6">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Repeat Password">
+              </div>
+            </div>
+
+            <div class="newUser">
+              <a href="/eboard/eboard/public/login.html">Click here to login</a>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
+        
         <div id="footer">
           <!-- Categories navbar -->
       <nav class="navbar navbar-default">
@@ -144,7 +163,7 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li class = "active" style="width: 14%; text-align: center"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li style="width: 14%; text-align: center"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
@@ -169,6 +188,12 @@
       </nav>
         </div>
       </div>
+
+  </div>
+
+
+  
+
 
 </body>
 
