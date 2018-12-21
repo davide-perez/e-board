@@ -44,3 +44,15 @@
 }
 
 
+@media only screen and (max-width: 600px) {
+  .main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 15px;
+  margin: 10px auto 30px;
+  max-width: 100%;
+  padding: 50px 70px 70px 71px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+}
+
+
