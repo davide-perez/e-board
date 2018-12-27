@@ -12,13 +12,14 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 
 	$data = array();
 	$serialize = array();
+
 	while($res = mysqli_fetch_row($result)){
 
 		$obj = create_obj($res);
 		array_push($data, $obj);
 
 	}
-
+	array_push($serialize, array("ads" => $data));
 	echo json_encode($serialize);
 
 
