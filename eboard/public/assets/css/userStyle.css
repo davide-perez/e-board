@@ -22,3 +22,16 @@
   background-position:center; 
   background-size:cover; 
 }
+
+#delete_button {
+	bottom:10px;
+	right:25px;
+	position:absolute;
+}
+
+
+@media (min-width: 800px) {
+ #floatButton {
+    float: right;
+  }
+}

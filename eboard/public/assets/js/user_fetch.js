@@ -1,5 +1,5 @@
 /**
-* Makes an AJAX call to the server, fetching the ads corresponding to the user
+* Makes an AJAX call to the server, fetching the ads corresponding to a specific category (TODO)
 */
 function fetch(){
 
@@ -53,6 +53,9 @@ function buildAd(ad){
 	var $text = $("<p class=\"card-text\">" + ad.description + "</p>");
 	$body.append($text);
 
+	var $delete = $("<button type=\"button\" class=\"btn btn-danger\" id = \"delete_button\">Delete</button>");
+	$body.append($delete);
+
 	$adcontainer.append($body);
 
 }
@@ -62,7 +65,7 @@ function buildAd(ad){
 */
 function populateAdPage(content){
 
-	var ads = content[0].ads;
+	var ads = content[1].ads;
 	setAds(ads);
 
 }
