@@ -1,5 +1,5 @@
 .coverflow {
-  z-index: 10;
+  z-index: 0;
   position: relative;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
