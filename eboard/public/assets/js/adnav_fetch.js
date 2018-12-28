@@ -1,11 +1,12 @@
 /**
 * Makes an AJAX call to the server, fetching the ads corresponding to a specific category (TODO)
 */
-function fetch(){
+function fetch(cat){
 
 	$.ajax({
 				url: '/eboard/eboard/server/queries/adnavigation.php',
 				type: 'GET',
+				data: "{category: " + cat +"}",
 				success: function(data, status){
 					var res = jQuery.parseJSON(data);
 					populateAdPage(res);

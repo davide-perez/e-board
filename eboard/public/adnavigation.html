@@ -28,9 +28,13 @@
 
   <script>
 
+      var category = $(".cat-name").html();
+      console.table(category);
+      console.log("Object text: " + category);
+
       $(document).ready(function(){
 
-        fetch();
+        fetch(category);
 
     });
 
@@ -188,7 +192,7 @@
               <li class="divider-vertical"></li>
               <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "active" style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "active" style="width: 14%; text-align: center""><a href="#" class="cat-name"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>
