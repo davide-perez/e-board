@@ -14,14 +14,28 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+  <!-- custom scripts -->
+  <script src="/eboard/eboard/public/assets/js/user_fetch.js"></script>
 
-  <link href="/eboard/eboard/public/assets/css/mystyle.css" rel="stylesheet" type="text/css">
+  
   <link href="/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
+  <link href="/eboard/eboard/public/assets/css/userStyle.css" rel="stylesheet" type="text/css">
   
 
 </head>
 
 <body>
+
+  <script>
+
+      $(document).ready(function(){
+
+        fetch();
+
+    });
+
+  </script>
+
   <!-- Main container-->
   <div id="container">
 
@@ -56,7 +70,7 @@
           <ul class="nav navbar-nav navbar-left">
 
             <li><a href="/eboard/eboard/public/homepage.html">E-Board</a></li>
-            <li class="active"><a href="#">Login</a></li>
+            <li><a href="/eboard/eboard/public/login.html">Login</a></li>
             <li><a href="/eboard/eboard/public/registration.html">Register</a></li>
             <li><a href="#">About</a></li>
 
@@ -81,7 +95,7 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <li class = "active"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             
@@ -92,7 +106,8 @@
     </div>
 
     <!-- MIDDLE -->
-    <div id="middle" style = "padding-left:50px; padding-right: 50px; padding-top: 20px;">
+    <div id="middle" style = "padding-left:50px; padding-right: 50px; padding-top: 20px; height:100%;  
+   padding-bottom:50px;">
       <div id="myCarousel" class="carousel slide" data-ride="carousel" >
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -114,7 +129,7 @@
     <div class="item">
       <img src="/eboard/eboard/public/assets/images/two.jpg" alt="Chicago" style ="width:100%; height:300px">
       <div class="carousel-caption">
-        <button type="button" class="btn btn-primary btn-lg">See your ads</button>
+        <a href = "#your_ad" role="button" class="btn btn-primary btn-lg">See your ads</a>
         <h3>Get the list of your posted ads</h3>
       </div>
     </div>
@@ -139,17 +154,81 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+    <!-- Finish of carousel, start profile -->
+    <br>
+      <h1 class="my-4"><span class = "cat-title">Profile</span>
+        <small class="cat-text">Your personal content</small>
+      </h1>
+    <hr>
+    <br>
+
+  <div class = "row well">
+    <div class = "col-md-6 col-lg-6 col-sm-12">
+      <p class = "lead"><span class="glyphicon glyphicon-book"></span><b> Name:</b> Davide Cremonini</p>
+    </div>
+    <div class = "col-md-6 col-lg-6 col-sm-12">
+      <p class = "lead"><span class="glyphicon glyphicon-user"></span><b> Username:</b> davide_96</p>
+    </div>
+    <div class = "col-md-6 col-lg-6 col-sm-12">
+      <p class = "lead"><span class="glyphicon glyphicon-envelope"></span><b> Email:</b> davide.cremo@gmail.com</p>
+    </div>
+    <div class = "col-md-6 col-lg-6 col-sm-12">
+      <p class = "lead"><span class="glyphicon glyphicon-phone-alt"></span><b> Phone:</b> 335 8477989</p>
+    </div>
+     <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
+      <button class = "btn btn-primary" data-toggle="collapse" data-target="#demo">Change password</button>
+      <div id="demo" class="collapse " style = "padding-top: 20px;">
+      <form>
+        <div class="form-group">
+          <label for="oldpw">Old password:</label>
+          <input type="password" class="form-control" id="oldpw" placeholder="Old password">
+        </div>
+        <div class="form-group">
+          <label for="newpw">New password:</label>
+          <input type="password" class="form-control" id="newpw" placeholder="New password">
+        </div>
+        <div class="form-group">
+          <label for="repeatpw">Repeat password:</label>
+          <input type="password" class="form-control" id="repeatpw" placeholder="Repeat password">
+        </div>
+        <button class = "btn btn-warning">Change</button>
+  
+    </form>
+  </div>
+    </div>
+    <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
+      <button class = "btn btn-danger">Logout</button>
+    </div>
+    
+
+  </div>
+
+  <br>
+  <h1 class="my-4"><span class = "cat-title"><a name="your_ad" style = "color:black">Your ads</a></span>
+    <small class="cat-text">The current ads you have posted</small>
+    <button type="button" class="btn btn-warning" id = "floatButton">Post an ad</button>
+  </h1>
+  <hr>
+  <br>
+
+  <!--  Div to be fetched with the ads -->
+
+  <div class="row" id = "personal_ads">
+        
+  </div>
+
     </div>
         
         <div id="footer">
           <!-- Categories navbar -->
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default navbar-fixed-bottom">
 
         <div class="container-fluid">
 
           <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_2" aria-expanded="false" aria-controls="navbar">
 
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
@@ -160,23 +239,23 @@
 
           </div>
 
-          <div id="navbar" class="navbar-collapse collapse">
+          <div id="navbar_2" class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li style="width: 14%; text-align: center"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li id = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
-              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
+              <li id = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li style="width: 14%; text-align: center""><a href="/eboard/eboard/public/adnavigation.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li id = "bottomLI"><a href="/eboard/eboard/public/adnavigation.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
-              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
+              <li id = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>
-              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-globe"></span> Events</a></li>
+              <li id = "bottomLI"><a href="#"><span class="glyphicon glyphicon-globe"></span> Events</a></li>
               <li class="divider-vertical"></li>
-              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-book"></span> Lectures</a></li>
+              <li id = "bottomLI"><a href="#"><span class="glyphicon glyphicon-book"></span> Lectures</a></li>
               <li class="divider-vertical"></li>
-              <li style="width: 14%; text-align: center""><a href="#"><span class="glyphicon glyphicon-th"></span> Other</a></li>
+              <li id = "bottomLI"><a href="#"><span class="glyphicon glyphicon-th"></span> Other</a></li>
 
             </ul>
 
