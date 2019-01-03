@@ -17,7 +17,8 @@ function addClickListeners(){
 		let catName = $(this).find("a").text().trim().toLowerCase();
 		$("<input>").attr({
     		type: "hidden",
-    		name: catMap[catName]
+    		name: "category",
+    		value: catMap[catName]
 		}).appendTo("#catForm");
 
 		$("#catForm").submit();

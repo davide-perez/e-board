@@ -33,8 +33,17 @@
 		$db = new ConnectionFactory();
 		$conn = $db -> get_connection();
 
-		$sql = "SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = \"lectures\""; 
-		$result = mysqli_query($conn, $sql);
+    $cat = isset($_GET['category']) ? $_GET['category'] : 'newest';
+
+		//$sql = "SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = \"" . $cat . "\""; 
+		//$result = mysqli_query($conn, $sql);
+
+    $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ?");
+    $stmt->bind_param('s', $cat);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
 ?>
 
   <script>
@@ -214,7 +223,7 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span>Newest</a></li>
+              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
