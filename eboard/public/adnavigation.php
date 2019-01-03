@@ -18,6 +18,9 @@
   <link href="/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
   <link href="/eboard/eboard/public/assets/css/adnavigationStyle.css" rel="stylesheet" type="text/css">
 
+  <script src="/eboard/eboard/public/assets/js/category_fetch.js"></script>
+
+
 
 </head>
 
@@ -33,6 +36,16 @@
 		$sql = "SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = \"lectures\""; 
 		$result = mysqli_query($conn, $sql);
 ?>
+
+  <script>
+
+      $(document).ready(function(){
+
+        addClickListeners();
+
+    });
+
+  </script>
 
   <!-- Main container-->
   <div id="container">
