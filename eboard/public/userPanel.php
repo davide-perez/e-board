@@ -265,6 +265,8 @@
 
           <div id="navbar_2" class="navbar-collapse collapse">
 
+            <form id="catForm" action="adnavigation.php" method="GET">
+
             <ul class="nav navbar-nav" style = "width:100%">
 
               <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
@@ -283,7 +285,8 @@
 
             </ul>
 
-             
+            </form>
+
             
           </div><!--/.nav-collapse -->
 

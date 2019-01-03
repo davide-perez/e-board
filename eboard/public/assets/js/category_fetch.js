@@ -10,6 +10,9 @@ var catMap = {
 
 }
 
+/*
+Add listeners for category navigation bar, to get the proper ads when clicking on them.
+*/
 function addClickListeners(){
 
 

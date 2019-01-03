@@ -35,10 +35,8 @@
 
     $cat = isset($_GET['category']) ? $_GET['category'] : 'newest';
 
-		//$sql = "SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = \"" . $cat . "\""; 
-		//$result = mysqli_query($conn, $sql);
-
     $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ?");
+
     $stmt->bind_param('s', $cat);
 
     $stmt->execute();
