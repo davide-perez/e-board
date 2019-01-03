@@ -30,6 +30,7 @@
     $(document).ready(function(){
 
       addClickListeners();
+      $('[data-toggle="tooltip"]').tooltip(); 
 
     });
 
@@ -95,7 +96,7 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <li class = "disabled"><a href="#" data-toggle="tooltip" data-placement="bottom" title="You must login to see your profile and post an ad!"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             
@@ -162,7 +163,7 @@
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="/eboard/eboard/public/adnavigation.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI"><a href="/eboard/eboard/public/adnavigation.php"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>

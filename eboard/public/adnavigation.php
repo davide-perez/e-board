@@ -50,6 +50,7 @@
       $(document).ready(function(){
 
         addClickListeners();
+        $('[data-toggle="tooltip"]').tooltip(); 
 
     });
 
@@ -123,14 +124,17 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello 
             <?php 
-                if (isset($_SESSION["LOGIN"]))
-                  echo $_SESSION["USERNAME"];
-                else
-                  echo "Visitor";
+                if (isset($_SESSION["LOGIN"])) {
+                  echo '<li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span>';
+                  echo " Hello " .$_SESSION["USERNAME"];
+                }
+                else {
+                  echo '<li class = "disabled"><a href="#" data-toggle="tooltip" data-placement="bottom" title="You must login to see your profile and post an ad!"><span class="glyphicon glyphicon-user"></span>';
+                  echo " Hello Visitor";
+                }
             ?> 
-          </a></li>
+            </a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             
@@ -242,7 +246,7 @@
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI active"><a href=""><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI active"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>
