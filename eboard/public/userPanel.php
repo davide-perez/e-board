@@ -39,6 +39,9 @@
     });
 
   </script>
+  <?php
+    session_start();
+  ?>
 
   <!-- Main container-->
   <div id="container">
@@ -99,7 +102,14 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li class = "active"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <li class = "active"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello 
+              <?php 
+                if (isset($_SESSION["LOGIN"]))
+                  echo $_SESSION["USERNAME"];
+                else
+                  echo "Visitor";
+              ?>
+            </a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             

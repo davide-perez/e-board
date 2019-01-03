@@ -28,8 +28,12 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		session_start();
 		$_SESSION["LOGIN"] = $user_id;
 		$_SESSION["USERNAME"] = $username;
-		echo '<script>document.location.href="user.html"</script>';
+		echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
+
 	}
+
+	$stmt->close();
+	$mysqli->close();
 
 
 ?>
