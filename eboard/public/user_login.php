@@ -7,16 +7,29 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
-	$email = $_POST['inputUsername'];
+	$username = $_POST['inputUsername'];
 	$pwd = $_POST['inputPassword'];
 
+
+
+
+	$stmt = mysqli_prepare($conn, "SELECT * FROM standard_user WHERE username = ? AND password = ?");
+	mysqli_stmt_bind_param($stmt, "ss", $username, $pwd);
+	mysqli_stmt_execute($stmt);
+	$result = mysqli_stmt_get_result($stmt);
+
 	
+	if ($result -> num_rows === 0) {echo '<script>document.location.href="https://www.google.com"</script>';}
+	else {
 
+		$row = $result -> fetch_assoc();
+		$user_id = $row["user_id"];
 
-
-
-	$sql = "SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id";
-	$result = mysqli_query($conn, $sql);
+		session_start();
+		$_SESSION["LOGIN"] = $user_id;
+		$_SESSION["USERNAME"] = $username;
+		echo '<script>document.location.href="user.html"</script>';
+	}
 
 
 ?>
