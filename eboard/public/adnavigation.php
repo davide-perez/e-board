@@ -210,13 +210,15 @@
 
           <div id="navbar_2" class="navbar-collapse collapse">
 
+            <form id="catForm" action="adnavigation.php" method="GET">
+
             <ul class="nav navbar-nav" style = "width:100%">
 
               <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span>Newest</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI" class = "active"><a href=""><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI active"><a href=""><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>
@@ -228,7 +230,7 @@
 
             </ul>
 
-             
+            </form>
             
           </div><!--/.nav-collapse -->
 
