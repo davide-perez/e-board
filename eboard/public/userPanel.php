@@ -39,6 +39,7 @@
     });
 
   </script>
+
   <?php
     session_start();
   ?>
@@ -151,7 +152,7 @@
     <div class="item">
       <img src="/eboard/eboard/public/assets/images/three.jpg" alt="New York" style ="width:100%; height:300px">
       <div class="carousel-caption">
-        <button type="button" class="btn btn-danger btn-lg">Logout</button>
+        <a href = "/eboard/eboard/server/php/user_logout.php" role="button" class="btn btn-danger btn-lg">Logout</a>
         <h3>We will miss you..</h3>
       </div>
     </div>
@@ -179,10 +180,18 @@
 
   <div class = "row well">
     <div class = "col-md-6 col-lg-6 col-sm-12">
-      <p class = "lead"><span class="glyphicon glyphicon-book"></span><b> Name:</b> Davide Cremonini</p>
+      <p class = "lead"><span class="glyphicon glyphicon-book"></span><b> Name: </b> 
+        <?php
+          echo $_SESSION["NAME"] . " " . $_SESSION["SURNAME"];
+        ?>
+      </p>
     </div>
     <div class = "col-md-6 col-lg-6 col-sm-12">
-      <p class = "lead"><span class="glyphicon glyphicon-user"></span><b> Username:</b> davide_96</p>
+      <p class = "lead"><span class="glyphicon glyphicon-user"></span><b> Username: </b>
+        <?php
+          echo $_SESSION["USERNAME"];
+        ?> 
+      </p>
     </div>
     <div class = "col-md-6 col-lg-6 col-sm-12">
       <p class = "lead"><span class="glyphicon glyphicon-envelope"></span><b> Email:</b> davide.cremo@gmail.com</p>
@@ -211,8 +220,9 @@
     </form>
   </div>
     </div>
+
     <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
-      <button class = "btn btn-danger">Logout</button>
+      <a href = "/eboard/eboard/server/php/user_logout.php" role="button" class="btn btn-danger">Logout</a>
     </div>
     
 
