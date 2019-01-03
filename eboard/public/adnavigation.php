@@ -31,7 +31,6 @@
 		$conn = $db -> get_connection();
 
 		$sql = "SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = \"lectures\""; 
-
 		$result = mysqli_query($conn, $sql);
 ?>
 
