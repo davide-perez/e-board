@@ -122,12 +122,25 @@
       <br>
 
       <div class="row">
-      	<?php
 
-      		echo "$result";
+      	<?php while($res = mysqli_fetch_row($result)) { ?>
 
-      	?>
-        
+      	<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          
+            <div class="card-body">
+            	<div id = "card-image" style="background-image: url( <?php echo $res[2]; ?> )">
+
+            	</div>
+              <h4 class="card-title">
+                <a href="#"> <?php echo $res[0]; ?> </a>
+              </h4>
+              <p class="card-text"> <?php echo $res[1]; ?> </p>
+            </div>
+          
+        </div>
+
+    	<?php } ?>
+
       </div>
 
       <!-- Pagination -->
@@ -214,10 +227,6 @@
       </div>
 
   </div>
-
-
-  
-
 
 </body>
 

@@ -5,10 +5,10 @@ function fetch(cat){
 
 	$.ajax({
 				url: '/eboard/eboard/server/queries/adnavigation.php',
-				type: 'GET',
-				data: "{category: " + cat +"}",
+				type: 'POST',
 				success: function(data, status){
 					var res = jQuery.parseJSON(data);
+					console.log(res);
 					populateAdPage(res);
 				}
 
@@ -22,8 +22,8 @@ function fetch(cat){
 */
 function setCategory(category) {
 
-	$(".cat-title").text(category);
-	$(".cat-text").text("Private lectures offerings and requests"); //will be read from something else
+	$("#cat-title").text(category);
+	$("#cat-text").text("Some fancy category text"); //will be read from something else
 
 }
 
