@@ -45,6 +45,10 @@
 
   </script>
 
+  <?php
+    session_start();
+  ?>
+
       <div id="container">
         <!-- HEADER-->
     <div id="header">
@@ -77,8 +81,17 @@
           <ul class="nav navbar-nav navbar-left">
 
             <li class = "active"><a href="">E-Board</a></li>
-            <li><a href="/eboard/eboard/public/login.html">Login</a></li>
-            <li><a href="/eboard/eboard/public/registration.html">Register</a></li>
+            <?php
+              if (isset($_SESSION["LOGIN"])) {
+                echo '<li><a href="">Post an ad</a></li>';
+                }
+              else {
+                echo '<li><a href="/eboard/eboard/public/login.html">Login</a></li>';
+                echo '<li><a href="/eboard/eboard/public/registration.html">Register</a></li>';
+              }
+                
+              
+            ?>
             <li><a href="#">About</a></li>
 
 
@@ -102,7 +115,14 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello
+            <?php 
+                if (isset($_SESSION["LOGIN"]))
+                  echo $_SESSION["USERNAME"];
+                else
+                  echo "Visitor";
+            ?> 
+            </a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             

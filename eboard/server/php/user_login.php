@@ -7,8 +7,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
-	$username = $_POST['inputUsername'];
-	$pwd = $_POST['inputPassword'];
+	$username = $_POST["inputUsername"];
+	$pwd = $_POST["inputPassword"];
 
 
 
@@ -19,7 +19,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$result = mysqli_stmt_get_result($stmt);
 
 	
-	if ($result -> num_rows === 0) {echo '<script>document.location.href="https://www.google.com"</script>';}
+	if ($result -> num_rows === 0) {echo '<script>document.location.href=""</script>';}
 	else {
 
 		$row = $result -> fetch_assoc();
@@ -35,7 +35,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	}
 
 	$stmt->close();
-	$mysqli->close();
+	$conn->close();
 
 
 ?>
