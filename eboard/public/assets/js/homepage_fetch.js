@@ -40,10 +40,3 @@ function setup(id){
 
     });
 }
-
-
-function addClickListeners(){
-
-	
-
-}
