@@ -116,37 +116,37 @@
               <p>Please enter your personal information</p>
 
             </div>
-            <form id="Registration">
+            <form id="Registration" action = "/eboard/eboard/server/php/user_registration.php" onsubmit="return validate()" method = "post">
 
             <div class = "row">
               <div class="form-group col-xs-12 col-md-6">
-                <input type="text" class="form-control" id="inputName" placeholder="Name" required>
+                <input type="text" class="form-control" id="inputName" placeholder="Name" name = "inputName" required>
               </div>
 
               <div class="form-group col-xs-12 col-md-6">
-                <input type="text" class="form-control" id="inputSurname" placeholder="Surname" required>
+                <input type="text" class="form-control" id="inputSurname" placeholder="Surname" name = "inputSurname" required>
               </div>
             </div>
 
             <div class="form-group">
-              <input type="email" class="form-control" id="inputEmail" placeholder="Email Address" required>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email Address" name = "inputEmail" required>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" id="inputTel" placeholder="Telephone number" required>
+              <input type="text" class="form-control" id="inputTel" placeholder="Telephone number (no blank spaces)" name = "inputTel" required>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" id="inputUsername" placeholder="Username" required>
+              <input type="text" class="form-control" id="inputUsername" placeholder="Username" name = "inputUsername" required>
             </div>
 
             <div class = "row">
               <div class="form-group col-xs-12 col-md-6">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name = "inputPassword" required>
               </div>
 
               <div class="form-group col-xs-12 col-md-6">
-                <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat Password" required>
+                <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat Password" name = "repeatPassword" required>
               </div>
             </div>
 

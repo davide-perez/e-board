@@ -1,6 +1,6 @@
 <?php
 /**
-* Queries the content for the homepage coverflow (data is then fetched via AJAX)
+* User login
 */
 
 require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
