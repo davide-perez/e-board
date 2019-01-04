@@ -30,6 +30,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		$_SESSION["USERNAME"] = $username;
 		$_SESSION["NAME"] = $row["name"];
 		$_SESSION["SURNAME"] = $row["surname"];
+		$_SESSION["MAIL"] = $row["mail"];
+		$_SESSION["PHONE"] = $row["phone"];
 		echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
 
 	}
