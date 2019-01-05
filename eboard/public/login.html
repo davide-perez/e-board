@@ -30,6 +30,7 @@
     $(document).ready(function(){
 
       addClickListeners();
+      $('[data-toggle="tooltip"]').tooltip(); 
 
     });
 
@@ -69,7 +70,7 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li><a href="/eboard/eboard/public/homepage.html">E-Board</a></li>
+            <li><a href="/eboard/eboard/public/homepage.php">E-Board</a></li>
             <li class="active"><a href="#">Login</a></li>
             <li><a href="/eboard/eboard/public/registration.html">Register</a></li>
             <li><a href="#">About</a></li>
@@ -95,7 +96,7 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <li class = "disabled"><a href="#" data-toggle="tooltip" data-placement="bottom" title="You must login to see your profile and post an ad!"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             
@@ -117,11 +118,11 @@
             <form id="Login" action = "/eboard/eboard/server/php/user_login.php" method = "post">
 
             <div class="form-group">
-              <input type="text" class="form-control" id="inputUsername" placeholder="Username" name = "inputUsername">
+              <input type="text" class="form-control" id="inputUsername" placeholder="Username" name = "inputUsername" required>
             </div>
 
             <div class="form-group">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password" name = "inputPassword">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password" name = "inputPassword" required>
             </div>
             <div class="newUser">
               <a href="/eboard/eboard/public/registration.html">Click here to register</a>
@@ -158,11 +159,11 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.php"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="/eboard/eboard/public/adnavigation.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI"><a href="/eboard/eboard/public/adnavigation.php"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>

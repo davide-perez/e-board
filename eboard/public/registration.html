@@ -20,6 +20,7 @@
 
   <script src="/eboard/eboard/public/assets/js/category_fetch.js"></script>
 
+
 </head>
 
 <body>
@@ -29,6 +30,7 @@
     $(document).ready(function(){
 
       addClickListeners();
+      $('[data-toggle="tooltip"]').tooltip(); 
 
     });
 
@@ -68,7 +70,7 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li><a href="/eboard/eboard/public/homepage.html">E-Board</a></li>
+            <li><a href="/eboard/eboard/public/homepage.php">E-Board</a></li>
             <li><a href="/eboard/eboard/public/login.html">Login</a></li>
             <li class = "active"><a href="">Register</a></li>
             <li><a href="#">About</a></li>
@@ -94,7 +96,7 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <li class = "disabled"><a href="#" data-toggle="tooltip" data-placement="bottom" title="You must login to see your profile and post an ad!"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             
@@ -114,33 +116,37 @@
               <p>Please enter your personal information</p>
 
             </div>
-            <form id="Login">
+            <form id="Registration" action = "/eboard/eboard/server/php/user_registration.php" onsubmit="return validate()" method = "post">
 
             <div class = "row">
               <div class="form-group col-xs-12 col-md-6">
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                <input type="text" class="form-control" id="inputName" placeholder="Name" name = "inputName" required>
               </div>
 
               <div class="form-group col-xs-12 col-md-6">
-                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+                <input type="text" class="form-control" id="inputSurname" placeholder="Surname" name = "inputSurname" required>
               </div>
             </div>
 
             <div class="form-group">
-              <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email Address" name = "inputEmail" required>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+              <input type="text" class="form-control" id="inputTel" placeholder="Telephone number (no blank spaces)" name = "inputTel" required>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputUsername" placeholder="Username" name = "inputUsername" required>
             </div>
 
             <div class = "row">
               <div class="form-group col-xs-12 col-md-6">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name = "inputPassword" required>
               </div>
 
               <div class="form-group col-xs-12 col-md-6">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Repeat Password">
+                <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat Password" name = "repeatPassword" required>
               </div>
             </div>
 
@@ -179,7 +185,7 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.php"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
@@ -207,10 +213,14 @@
 
   </div>
 
+  <script src="/eboard/eboard/public/assets/js/input_check.js"></script>
+
 
   
 
 
 </body>
+
+
 
 </html>

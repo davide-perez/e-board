@@ -77,9 +77,18 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li><a href="/eboard/eboard/public/homepage.html">E-Board</a></li>
-            <li><a href="/eboard/eboard/public/login.html">Login</a></li>
-            <li><a href="/eboard/eboard/public/registration.html">Register</a></li>
+            <li><a href="/eboard/eboard/public/homepage.php">E-Board</a></li>
+            <?php
+              if (isset($_SESSION["LOGIN"])) {
+                echo '<li><a href="">Post an ad</a></li>';
+                }
+              else {
+                echo '<li><a href="/eboard/eboard/public/login.html">Login</a></li>';
+                echo '<li><a href="/eboard/eboard/public/registration.html">Register</a></li>';
+              }
+                
+              
+            ?>
             <li><a href="#">About</a></li>
 
 
@@ -194,10 +203,18 @@
       </p>
     </div>
     <div class = "col-md-6 col-lg-6 col-sm-12">
-      <p class = "lead"><span class="glyphicon glyphicon-envelope"></span><b> Email:</b> davide.cremo@gmail.com</p>
+      <p class = "lead"><span class="glyphicon glyphicon-envelope"></span><b> Email: </b> 
+        <?php
+          echo $_SESSION["MAIL"];
+        ?> 
+      </p>
     </div>
     <div class = "col-md-6 col-lg-6 col-sm-12">
-      <p class = "lead"><span class="glyphicon glyphicon-phone-alt"></span><b> Phone:</b> 335 8477989</p>
+      <p class = "lead"><span class="glyphicon glyphicon-phone-alt"></span><b> Phone: </b>
+        <?php
+          echo $_SESSION["PHONE"];
+        ?> 
+      </p>
     </div>
      <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
       <button class = "btn btn-primary" data-toggle="collapse" data-target="#demo">Change password</button>
@@ -209,11 +226,11 @@
         </div>
         <div class="form-group">
           <label for="newpw">New password:</label>
-          <input type="password" class="form-control" id="newpw" placeholder="New password">
+          <input type="password" class="form-control" id="inputPassword" placeholder="New password">
         </div>
         <div class="form-group">
           <label for="repeatpw">Repeat password:</label>
-          <input type="password" class="form-control" id="repeatpw" placeholder="Repeat password">
+          <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat password">
         </div>
         <button class = "btn btn-warning">Change</button>
   
@@ -269,7 +286,7 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.php"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
@@ -297,6 +314,9 @@
       </div>
 
   </div>
+
+  <script src="/eboard/eboard/public/assets/js/input_check.js"></script>
+
 
 
   

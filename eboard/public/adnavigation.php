@@ -27,6 +27,7 @@
 <body>
 
 <?php
+    session_start();
 
 	require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
 
@@ -49,6 +50,7 @@
       $(document).ready(function(){
 
         addClickListeners();
+        $('[data-toggle="tooltip"]').tooltip(); 
 
     });
 
@@ -88,8 +90,17 @@
           <ul class="nav navbar-nav navbar-left">
 
             <li class="active"><a href="">E-Board</a></li>
-            <li><a href="/eboard/eboard/public/login.html">Login</a></li>
-            <li><a href="/eboard/eboard/public/registration.html">Register</a></li>
+            <?php
+              if (isset($_SESSION["LOGIN"])) {
+                echo '<li><a href="">Post an ad</a></li>';
+                }
+              else {
+                echo '<li><a href="/eboard/eboard/public/login.html">Login</a></li>';
+                echo '<li><a href="/eboard/eboard/public/registration.html">Register</a></li>';
+              }
+                
+              
+            ?>
             <li><a href="#">About</a></li>
 
 
@@ -113,7 +124,17 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello Visitor</a></li>
+            <?php 
+                if (isset($_SESSION["LOGIN"])) {
+                  echo '<li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span>';
+                  echo " Hello " .$_SESSION["USERNAME"];
+                }
+                else {
+                  echo '<li class = "disabled"><a href="#" data-toggle="tooltip" data-placement="bottom" title="You must login to see your profile and post an ad!"><span class="glyphicon glyphicon-user"></span>';
+                  echo " Hello Visitor";
+                }
+            ?> 
+            </a></li>
             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           </ul>
             
@@ -221,11 +242,11 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.php"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI active"><a href=""><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI active"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>

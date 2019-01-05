@@ -1,14 +1,14 @@
 <?php
 /**
-* Queries the content for the homepage coverflow (data is then fetched via AJAX)
+* User login
 */
 
 require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
 
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
-	$username = $_POST['inputUsername'];
-	$pwd = $_POST['inputPassword'];
+	$username = $_POST["inputUsername"];
+	$pwd = $_POST["inputPassword"];
 
 
 
@@ -19,7 +19,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$result = mysqli_stmt_get_result($stmt);
 
 	
-	if ($result -> num_rows === 0) {echo '<script>document.location.href="https://www.google.com"</script>';}
+	if ($result -> num_rows === 0) {echo '<script>document.location.href=""</script>';}
 	else {
 
 		$row = $result -> fetch_assoc();
@@ -30,12 +30,14 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		$_SESSION["USERNAME"] = $username;
 		$_SESSION["NAME"] = $row["name"];
 		$_SESSION["SURNAME"] = $row["surname"];
+		$_SESSION["MAIL"] = $row["mail"];
+		$_SESSION["PHONE"] = $row["phone"];
 		echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
 
 	}
 
 	$stmt->close();
-	$mysqli->close();
+	$conn->close();
 
 
 ?>
