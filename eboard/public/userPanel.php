@@ -38,7 +38,8 @@
   $db = new ConnectionFactory();
   $conn = $db -> get_connection();
 
-  $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = ?");
+
+  $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = ? AND user_id = " . $_SESSION["LOGIN"]);
   $state = 1;
 
   $stmt->bind_param('i', $state);
@@ -270,7 +271,7 @@
 
   <!--  Div to be fetched with the ads -->
 
-  <div class="row" id = "personal_ads">
+  <div class="row" id ="personal_ads">
         <?php while($res = mysqli_fetch_row($result)) { ?>
 
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
@@ -283,6 +284,7 @@
                 <a href="#"> <?php echo $res[0]; ?> </a>
               </h4>
               <p class="card-text"> <?php echo $res[1]; ?> </p>
+              <button type="button" class="btn btn-danger" id="delete_button">Delete</button>
             </div>
           
         </div>
