@@ -134,8 +134,8 @@
 
       <!-- Page Heading - will be generated automatically? -->
       <br>
-      <h1 class="my-4"><span id="cat-title"><!-- Automatically generated --></span>
-        <small id="cat-text"><!-- Automatically generated --></small>
+      <h1 class="my-4"><span id="cat-title"><?php echo $cat ?></span>
+        <small id="cat-text"><?php echo "Cool no?" ?></small>
       </h1>
       <br>
       <br>
