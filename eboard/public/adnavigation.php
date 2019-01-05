@@ -34,11 +34,12 @@
 		$db = new ConnectionFactory();
 		$conn = $db -> get_connection();
 
-    $cat = isset($_GET['category']) ? $_GET['category'] : 'newest';
+    $catName = isset($_GET['catName']) ? $_GET['catName'] : 'No category';
+    $catDesc = isset($_GET['catDesc']) ? $_GET['catDesc'] : 'No category found';
 
     $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ?");
 
-    $stmt->bind_param('s', $cat);
+    $stmt->bind_param('s', $catName);
 
     $stmt->execute();
 
@@ -152,11 +153,9 @@
 
      <!-- Page Content -->
     <div class="container">
-
-      <!-- Page Heading - will be generated automatically? -->
       <br>
-      <h1 class="my-4"><span id="cat-title"><?php echo $cat ?></span>
-        <small id="cat-text"><?php echo "Cool no?" ?></small>
+      <h1 class="my-4"><span id="cat-title"><?php echo ucfirst($catName); ?></span>
+        <small id="cat-text"><?php echo $catDesc; ?></small>
       </h1>
       <br>
       <br>
