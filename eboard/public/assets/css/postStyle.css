@@ -1,0 +1,19 @@
+.jumbotron {
+	padding:50px;
+	background-image:url("/eboard/eboard/public/assets/images/jumbo.png"); 
+  	background-repeat:no-repeat; 
+  	background-position:center; 
+  	background-size:cover; 
+  	color:white; 
+}
+
+#middle {
+	padding-left:50px; 
+	padding-right: 50px; 
+	height:100%;  
+   	padding-bottom:50px;
+}
+
+hr {
+	border-color: white;
+}
