@@ -14,8 +14,8 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <!-- custom scripts -->
-  <script src="/eboard/eboard/public/assets/js/user_fetch.js"></script>
+  <!-- custom scripts 
+  <script src="/eboard/eboard/public/assets/js/user_fetch.js"></script>-->
 
   
   <link href="/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
@@ -29,20 +29,35 @@
 
 <body>
 
+
+<?php
+  session_start();
+
+  require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
+
+  $db = new ConnectionFactory();
+  $conn = $db -> get_connection();
+
+  $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = ?");
+  $state = 1;
+
+  $stmt->bind_param('i', $state);
+
+  $stmt->execute();
+
+  $result = $stmt->get_result();
+?>
+
   <script>
 
       $(document).ready(function(){
 
-        fetch();
+        //fetch();
         addClickListeners();
 
     });
 
   </script>
-
-  <?php
-    session_start();
-  ?>
 
   <!-- Main container-->
   <div id="container">
@@ -256,7 +271,24 @@
   <!--  Div to be fetched with the ads -->
 
   <div class="row" id = "personal_ads">
-        
+        <?php while($res = mysqli_fetch_row($result)) { ?>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          
+            <div class="card-body">
+              <div id = "card-image" style="background-image: url( <?php echo $res[2]; ?> )">
+
+              </div>
+              <h4 class="card-title">
+                <a href="#"> <?php echo $res[0]; ?> </a>
+              </h4>
+              <p class="card-text"> <?php echo $res[1]; ?> </p>
+            </div>
+          
+        </div>
+
+      <?php } ?>
+
   </div>
 
     </div>
