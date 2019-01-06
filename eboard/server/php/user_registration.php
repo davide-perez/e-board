@@ -47,6 +47,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
 	}
 
+
+	$insert->close();
+	$conn->close();
+
 	
 
 

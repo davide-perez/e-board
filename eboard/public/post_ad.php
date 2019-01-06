@@ -40,6 +40,8 @@
 
   </script>
 
+  <?php session_start(); ?>
+
   <!-- Main container-->
   <div id="container">
 
@@ -132,13 +134,14 @@
 
     <!-- MIDDLE -->
     <div id="middle">
+    <form method="POST" action="/eboard/eboard/server/php/ad_insertion.php" enctype="multipart/form-data">
     <div class = "well">
     <div class = "row">
       <div class = "col-md-6 col-sm-12 col-lg-6">
       <h3> <span class="glyphicon glyphicon-list-alt"></span> What is your advertisment about? </h3>
       <div class="form-group col-lg-8 col-md-8">
         <label for="category">Select category:</label>
-        <select class="form-control" id="category">
+        <select class="form-control" id="category" name= "category">
           <option>For rent</option>
           <option>Jobs</option>
           <option>Items for sale</option>
@@ -154,19 +157,72 @@
       <h3> <span class="glyphicon glyphicon-edit"></span> What is the title of your ad? </h3>
       <div class="form-group col-lg-8 col-md-8">
         <label for="title">Write title:</label>
-        <input type="text" class="form-control" id="title" placeholder="Title" required>
+        <input type="text" class="form-control" id="title" name = "title" placeholder="Title" required>
       </div>
     </div>
   </div> <!-- end row -->
 
     <hr>
+    <div class = "row">
+    <div class = "col-md-12 col-lg-12 col-sm-12">
     <h3> <span class="glyphicon glyphicon-list"></span> Advertisment description </h3>
     <div class="form-group">
       <label for="description">Advertisement text (<span id = "character_num">5000</span> chars available):</label>
 
-      <textarea class="form-control" rows="5" id="description"></textarea>
+      <textarea class="form-control" rows="5" id="description" name = "description"></textarea>
     </div>
   </div>
+</div>
+
+    <hr>
+
+    
+    
+    <!-- Upload image -->
+    <div class = "row">
+    <div class = "col-md-6 col-lg-6 col-sm-12">
+      <h3> <span class="glyphicon glyphicon-picture"></span> Add one or more images to your ad (optional)</h3>
+      
+      <!-- COMPONENT START -->
+      <div class="form-group col-lg-8">
+        <div class="input-group input-file" name="Fichier1" style = "z-index:0">
+          <span class="input-group-btn">
+            <button class="btn btn-default btn-choose" type="button">Choose</button>
+          </span>
+          <input type="text" class="form-control" placeholder='Choose a file...' />
+          <span class="input-group-btn">
+             <button class="btn btn-warning btn-reset" type="button">Reset</button>
+          </span>
+      </div>
+    </div>
+  
+    
+  </div>
+
+  <div class = "col-md-6 col-lg-6 col-sm-12">
+    <h3> <span class="glyphicon glyphicon-envelope"></span> Email contact:  
+      <?php 
+        echo $_SESSION["MAIL"];
+      ?>
+    </h3>
+    <h3> <span class="glyphicon glyphicon-phone"></span> Phone contact:  
+      <?php 
+        echo $_SESSION["PHONE"];
+      ?>
+    </h3>
+    
+    
+  </div>
+</div>
+
+
+  </div> <!-- well div-->
+
+  <br>
+  <div style = "text-align: center;">
+  <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Post ad </button>
+</div>
+  </form>
 
 
       
@@ -229,6 +285,8 @@
   </div>
 
   <script src="/eboard/eboard/public/assets/js/post_check.js"></script>
+  <script src="/eboard/eboard/public/assets/js/upload_image.js"></script>
+  
 
 
 
