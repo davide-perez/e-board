@@ -41,7 +41,8 @@ function checkTelephone() {
         phoneField.style.backgroundColor = "";
 }
 
-phoneField.addEventListener("keyup", checkTelephone);
+if (phoneField != null)
+    phoneField.addEventListener("keyup", checkTelephone);
 
 
 // function that checks some inputs

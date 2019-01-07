@@ -167,7 +167,7 @@
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="/eboard/eboard/public/adnavigation.php"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>

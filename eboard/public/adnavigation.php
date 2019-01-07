@@ -93,7 +93,7 @@
             <li class="active"><a href="">E-Board</a></li>
             <?php
               if (isset($_SESSION["LOGIN"])) {
-                echo '<li><a href="">Post an ad</a></li>';
+                echo '<li><a href="/eboard/eboard/public/post_ad.php">Post an ad</a></li>';
                 }
               else {
                 echo '<li><a href="/eboard/eboard/public/login.html">Login</a></li>';
