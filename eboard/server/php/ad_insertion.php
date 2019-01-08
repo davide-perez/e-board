@@ -1,6 +1,7 @@
 <?php
 
 require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 /*
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
@@ -51,7 +52,68 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$insert->close();
 	$conn->close();
 */
-print_r($_FILES);
+
+/*WORKS
+$target_dir = $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/resources/ads/images"; //move to config.ini
+$target_file = $target_dir . basename($_FILES["imgToUpload"]["name"]);
+$uploadOk = 0;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["imgToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 0;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 1;
+    }
+}
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["imgToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+
+
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 1) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["imgToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["imgToUpload"]["name"]) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+*/
+
+
+
+
+$uploader = new ImageLoader("imgToUpload", "babajaga");
+if($uploader -> do_upload()){
+
+	echo "yes";
+}
+else{
+
+	echo "nope";
+
+
+}
 
 
 ?>

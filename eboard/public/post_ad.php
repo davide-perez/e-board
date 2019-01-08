@@ -30,16 +30,17 @@
 <body>
 
   <script>
-
+/*
       $(document).ready(function(){
-
+        
+        bs_input_file();
         addClickListeners();
         $("#ad-submit").submit(function(event){
           event.preventDefault();
           uploadFile();
         });
 
-    });
+    });*/
 
   </script>
 
@@ -128,7 +129,7 @@
     <!-- MIDDLE -->
     <div id="middle">
 
-    <form id="ad-submit" method="POST" enctype="multipart/form-data">
+    <form id="ad-submit" action="/eboard/eboard/server/php/ad_insertion.php" method="POST" enctype="multipart/form-data">
 
     <div class = "well">
     <div class = "row">
@@ -173,26 +174,26 @@
 
     
     
-    <!-- Upload image -->
-    <div class = "row">
-    <div class = "col-md-6 col-lg-6 col-sm-12">
-      <h3> <span class="glyphicon glyphicon-picture"></span> Add one or more images to your ad (optional)</h3>
-      
-      <!-- COMPONENT START -->
-      <div class="form-group col-lg-8">
-        <div id = "img-group" class="input-group input-file" name="Fichier1" style = "z-index:0">
-          <span class="input-group-btn">
-            <button class="btn btn-default btn-choose" type="button">Choose</button>
-          </span>
-          <input type="text" class="form-control" placeholder='Choose a file...' />
-          <span class="input-group-btn">
-             <button class="btn btn-warning btn-reset" type="button">Reset</button>
-          </span>
-      </div>
-    </div>
-  
     
-  </div>
+    <div class = "row">
+
+<!-- Upload image -->
+    <div class="col-md-6">
+    <div class="form-group">
+        <label>Upload Image</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgToUpload" name="imgToUpload">
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+        </div>
+        <img id='img-upload'/>
+    </div>
+</div>
+<!-- -->
+
 
   <div class = "col-md-6 col-lg-6 col-sm-12">
     <h3> <span class="glyphicon glyphicon-envelope"></span> Email contact:  
@@ -215,7 +216,7 @@
 
   <br>
   <div style = "text-align: center;">
-  <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Post ad </button>
+  <button type="submit" name="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Post ad </button>
 </div>
   </form>
 
