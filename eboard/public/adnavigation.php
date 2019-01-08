@@ -37,7 +37,7 @@
     $catName = isset($_GET['catName']) ? $_GET['catName'] : 'No category';
     $catDesc = isset($_GET['catDesc']) ? $_GET['catDesc'] : 'No category found';
 
-    $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ?");
+    $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, date_until, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ? AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id" );
 
     $stmt->bind_param('s', $catName);
 
@@ -93,7 +93,7 @@
             <li class="active"><a href="">E-Board</a></li>
             <?php
               if (isset($_SESSION["LOGIN"])) {
-                echo '<li><a href="">Post an ad</a></li>';
+                echo '<li><a href="/eboard/eboard/public/post_ad.php">Post an ad</a></li>';
                 }
               else {
                 echo '<li><a href="/eboard/eboard/public/login.html">Login</a></li>';
@@ -174,6 +174,9 @@
                 <a href="#"> <?php echo $res[0]; ?> </a>
               </h4>
               <p class="card-text"> <?php echo $res[1]; ?> </p>
+              <?php
+               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[5] . '\')">Details</button>' ;
+              ?>
             </div>
           
         </div>
@@ -268,6 +271,33 @@
       </div>
 
   </div>
+
+  <!-- Modal experiments -->
+  <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="adModal" aria-hidden="true" style = "padding-top: 60px; padding-bottom: 60px">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="adTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id = "adBody">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function fillModal (title) {
+    $('#adModal').modal('show');
+    
+  }
+</script>
 
 </body>
 

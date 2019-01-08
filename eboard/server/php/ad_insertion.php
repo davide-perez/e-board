@@ -10,6 +10,28 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$cat = $_POST["category"];
 	$title = $_POST["title"];
 	$descr = $_POST["description"];
+	
+
+	switch ($cat) {
+    case "For rent":
+        $cat = "rentals";
+        break;
+    case "Jobs":
+        $cat = "jobs";
+        break;
+    case "Items for sale":
+        $cat = "itemsale";
+        break;
+    case "Events":
+        $cat = "events";
+    break;
+    case "Lectures":
+        $cat = "lectures";
+    break;
+    case "Other":
+        $cat = "others";
+    break;
+	}
 
 	$today = getdate();
 	$published =  $today["year"] . "-" . $today["mon"] . "-" . $today["mday"];

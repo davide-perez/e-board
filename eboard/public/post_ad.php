@@ -79,17 +79,7 @@
           <ul class="nav navbar-nav navbar-left">
 
             <li><a href="/eboard/eboard/public/homepage.php">E-Board</a></li>
-            <?php
-              if (isset($_SESSION["LOGIN"])) {
-                echo '<li><a href="">Post an ad</a></li>';
-                }
-              else {
-                echo '<li><a href="/eboard/eboard/public/login.html">Login</a></li>';
-                echo '<li><a href="/eboard/eboard/public/registration.html">Register</a></li>';
-              }
-                
-              
-            ?>
+            <li class = "active"><a href="">Post an ad</a></li>
             <li><a href="#">About</a></li>
 
 
@@ -113,7 +103,7 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li class = "active"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello 
+            <li><a href="/eboard/eboard/public/userPanel.php"><span class="glyphicon glyphicon-user"></span> Hello 
               <?php 
                 if (isset($_SESSION["LOGIN"]))
                   echo $_SESSION["USERNAME"];
@@ -264,7 +254,7 @@
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="/eboard/eboard/public/adnavigation.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>

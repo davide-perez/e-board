@@ -94,17 +94,7 @@
           <ul class="nav navbar-nav navbar-left">
 
             <li><a href="/eboard/eboard/public/homepage.php">E-Board</a></li>
-            <?php
-              if (isset($_SESSION["LOGIN"])) {
-                echo '<li><a href="">Post an ad</a></li>';
-                }
-              else {
-                echo '<li><a href="/eboard/eboard/public/login.html">Login</a></li>';
-                echo '<li><a href="/eboard/eboard/public/registration.html">Register</a></li>';
-              }
-                
-              
-            ?>
+            <li><a href="/eboard/eboard/public/post_ad.php">Post an ad</a></li>
             <li><a href="#">About</a></li>
 
 
@@ -161,7 +151,7 @@
     <div class="item active">
       <img src="/eboard/eboard/public/assets/images/one.jpg" alt="Los Angeles" style ="width:100%; height:300px">
       <div class="carousel-caption">
-        <button type="button" class="btn btn-warning btn-lg">Post an ad</button>
+        <a href = "/eboard/eboard/public/post_ad.php" role="button" class="btn btn-warning btn-lg">Post an ad </a>
         <h3>Select from several categories</h3>
       </div>
     </div>
@@ -264,7 +254,7 @@
   <br>
   <h1 class="my-4"><span class = "cat-title"><a name="your_ad" style = "color:black">Your ads</a></span>
     <small class="cat-text">The current ads you have posted</small>
-    <button type="button" class="btn btn-warning" id = "floatButton">Post an ad</button>
+    <a href = "/eboard/eboard/public/post_ad.php" role="button" class="btn btn-warning">Post an ad </a>
   </h1>
   <hr>
   <br>
@@ -324,7 +314,7 @@
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="/eboard/eboard/public/adnavigation.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>
