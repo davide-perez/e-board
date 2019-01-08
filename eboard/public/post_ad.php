@@ -33,8 +33,11 @@
 
       $(document).ready(function(){
 
-        //fetch();
         addClickListeners();
+        $("#ad-submit").submit(function(event){
+          event.preventDefault();
+          uploadFile();
+        });
 
     });
 
@@ -129,12 +132,14 @@
 
     <div class="jumbotron">
         <h1><span class="glyphicon glyphicon-pushpin"></span> Post your ad</h1> 
-        <p>Write your personal ad. Select the category, add images and insert all the information you want! Every ad needs to be accepted before being posted on the board. Please do not include offensive or off-topic contents.</p> 
+        <p>Write your personal ad. Select the category, add images and insert all the information you want! Every ad needs to be accepted before being posted on the board. Please do not include sensitive information, offensive or off-topic contents.</p> 
     </div>
 
     <!-- MIDDLE -->
     <div id="middle">
-    <form method="POST" action="/eboard/eboard/server/php/ad_insertion.php" enctype="multipart/form-data">
+
+    <form id="ad-submit" method="POST" enctype="multipart/form-data">
+
     <div class = "well">
     <div class = "row">
       <div class = "col-md-6 col-sm-12 col-lg-6">
@@ -185,7 +190,7 @@
       
       <!-- COMPONENT START -->
       <div class="form-group col-lg-8">
-        <div class="input-group input-file" name="Fichier1" style = "z-index:0">
+        <div id = "img-group" class="input-group input-file" name="Fichier1" style = "z-index:0">
           <span class="input-group-btn">
             <button class="btn btn-default btn-choose" type="button">Choose</button>
           </span>

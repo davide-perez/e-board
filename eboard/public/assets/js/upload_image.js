@@ -4,7 +4,10 @@
     function() {
       if ( ! $(this).prev().hasClass('input-ghost') ) {
         var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0' multiple>");
-        element.attr("name",$(this).attr("name"));
+        console.log("Created element: \n");
+        console.log(element)
+        element.attr("id", "imgblob");
+        element.attr("name", "images");
         element.change(function(){
           element.next(element).find('input').val((element.val()).split('\\').pop());
         });
@@ -25,7 +28,38 @@
     }
   );
 }
+
 $(function() {
   bs_input_file();
 });
+
+
+function uploadFile() {
+
+    var images = $(".input-ghost");
+    console.log("values");
+    console.table(images);
+    console.log("There are " + images.length + " files about to be sent.");
+    var form = new FormData();
+    let count = 0;
+    for(let img of images){
+      form.append("image" + count, images);
+      count = count + 1;
+    }
+
+    $.ajax({
+       url: "/eboard/eboard/server/php/ad_insertion.php",
+       type: "POST",
+       data: form,
+       processData: false,
+       contentType: false,
+       success: function(response) {
+           //alert("Data sent succesfully!");
+           alert(response);
+       },
+       error: function(jqXHR, textStatus, errorMessage) {
+           console.log(errorMessage); // Optional
+       }
+    });
+}
   

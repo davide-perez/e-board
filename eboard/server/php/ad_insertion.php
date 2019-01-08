@@ -1,7 +1,7 @@
 <?php
 
 require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
-
+/*
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
 	session_start();
@@ -28,7 +28,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 
 	$insert->close();
 	$conn->close();
-
+*/
+print_r($_FILES);
 
 
 ?>
