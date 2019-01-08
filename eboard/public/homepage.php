@@ -163,7 +163,7 @@
 
             <ul class="nav navbar-nav" style = "width:100%">
 
-              <li class = "active bottomLI"><a href="/eboard/eboard/public/homepage.html"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
+              <li class = "active bottomLI"><a href=""><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
               <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>

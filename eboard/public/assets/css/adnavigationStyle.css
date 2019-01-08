@@ -25,3 +25,9 @@
   background-position:center; 
   background-size:cover; 
 }
+
+#details_button {
+	bottom:10px;
+	left:25px;
+	position:absolute;
+}
