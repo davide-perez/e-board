@@ -222,20 +222,21 @@
      <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
       <button class = "btn btn-primary" data-toggle="collapse" data-target="#demo">Change password</button>
       <div id="demo" class="collapse " style = "padding-top: 20px;">
-      <form action = "change_pw.php" method = "post" id="pwForm">
+      <form action = "/eboard/eboard/server/php/change_pw.php" method = "post" id="pwForm">
         <div class="form-group">
-          <label for="oldpw">Old password:</label>
-          <input type="password" class="form-control" id="oldpw" placeholder="Old password">
+          <input type = "hidden" value = <?php echo '"'.$_SESSION["LOGIN"].'"'?> name= "user_id">
+          <label for="oldpw" id="oldpwLabel">Old password:</label>
+          <input type="password" class="form-control" id="oldpw" placeholder="Old password" name = "oldpw" required>
         </div>
         <div class="form-group">
           <label for="newpw">New password:</label>
-          <input type="password" class="form-control" id="inputPassword" placeholder="New password">
+          <input type="password" class="form-control" id="inputPassword" placeholder="New password" name="inputPassword" required>
         </div>
         <div class="form-group">
           <label for="repeatpw">Repeat password:</label>
-          <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat password">
+          <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat password" name = "repeatPassword" required>
         </div>
-        <button class = "btn btn-warning">Change</button>
+        <button type = "submit" class = "btn btn-warning" id = "change_button">Change</button>
   
     </form>
   </div>
@@ -377,7 +378,7 @@
 
   <script src="/eboard/eboard/public/assets/js/input_check.js"></script>
   <script src="/eboard/eboard/public/assets/js/fill_modal.js"></script>
-  <script src="/eboard/eboard/public/assets/js/pw_change.js"></script>
+  <script src="/eboard/eboard/public/assets/js/change_pw.js"></script>
 
 
 
