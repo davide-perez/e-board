@@ -38,12 +38,9 @@
   $db = new ConnectionFactory();
   $conn = $db -> get_connection();
 
+  $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id AND s.user_id = " . $_SESSION["LOGIN"]);
 
-  $stmt = $conn->prepare("SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = ? AND user_id = " . $_SESSION["LOGIN"]);
-  $state = 1;
-
-  $stmt->bind_param('i', $state);
-
+  
   $stmt->execute();
 
   $result = $stmt->get_result();
@@ -103,7 +100,7 @@
 
           <div class="col-sm-3 col-md-3">
 
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search" action = "/eboard/eboard/public/ad_search.php" method = "post">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
               <div class="input-group-btn">
@@ -225,7 +222,7 @@
      <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
       <button class = "btn btn-primary" data-toggle="collapse" data-target="#demo">Change password</button>
       <div id="demo" class="collapse " style = "padding-top: 20px;">
-      <form>
+      <form action = "change_pw.php" method = "post" id="pwForm">
         <div class="form-group">
           <label for="oldpw">Old password:</label>
           <input type="password" class="form-control" id="oldpw" placeholder="Old password">
@@ -262,7 +259,8 @@
   <!--  Div to be fetched with the ads -->
 
   <div class="row" id ="personal_ads">
-        <?php while($res = mysqli_fetch_row($result)) { ?>
+
+    <?php while($res = mysqli_fetch_row($result)) { ?>
 
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
           
@@ -271,15 +269,19 @@
 
               </div>
               <h4 class="card-title">
-                <a href="#"> <?php echo $res[0]; ?> </a>
+                <?php echo '<a href="javascript:fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">' .   $res[0] . '</a>'; ?> 
               </h4>
               <p class="card-text"> <?php echo $res[1]; ?> </p>
+              <?php
+               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">Details</button>' ;
+              ?>
               <button type="button" class="btn btn-danger" id="delete_button">Delete</button>
             </div>
           
         </div>
 
       <?php } ?>
+        
 
   </div>
 
@@ -339,7 +341,44 @@
 
   </div>
 
+  <!-- Modal experiments -->
+  <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="adModal" aria-hidden="true" style = "padding-top: 60px; padding-bottom: 60px">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="adTitle"></h2>
+      </div>
+      <div class="modal-body" id = "adBody">
+
+        <div id = "modalContainer">
+          <div id = "modalImage">
+            
+          </div>
+          <br>
+          <p class = "lead" id = "adDescription">
+          </p>
+          <br>
+          <h3>Contacts</h3>
+          <hr>
+          <div id = "contactsPanel">
+          </div>
+          <br>
+
+
+        </div>
+   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <script src="/eboard/eboard/public/assets/js/input_check.js"></script>
+  <script src="/eboard/eboard/public/assets/js/fill_modal.js"></script>
+  <script src="/eboard/eboard/public/assets/js/pw_change.js"></script>
+
 
 
 

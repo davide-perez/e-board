@@ -34,12 +34,9 @@
 		$db = new ConnectionFactory();
 		$conn = $db -> get_connection();
 
-    $catName = isset($_GET['catName']) ? $_GET['catName'] : 'No category';
-    $catDesc = isset($_GET['catDesc']) ? $_GET['catDesc'] : 'No category found';
+    $searched = $_POST["srch-term"];
 
-    $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ? AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id" );
-
-    $stmt->bind_param('s', $catName);
+    $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id WHERE ad_text LIKE '%" . $searched . "%' OR title LIKE '%" .$searched."%'" );
 
     $stmt->execute();
 
@@ -154,8 +151,8 @@
      <!-- Page Content -->
     <div class="container">
       <br>
-      <h1 class="my-4"><span id="cat-title"><?php echo ucfirst($catName); ?></span>
-        <small id="cat-text"><?php echo $catDesc; ?></small>
+      <h1 class="my-4"><span id="cat-title">Results</span>
+        <small id="cat-text">Ads that contain your searched text</small>
       </h1>
       <br>
       <br>
