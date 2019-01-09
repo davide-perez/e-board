@@ -30,17 +30,14 @@
 <body>
 
   <script>
-/*
+
       $(document).ready(function(){
         
-        bs_input_file();
+        
         addClickListeners();
-        $("#ad-submit").submit(function(event){
-          event.preventDefault();
-          uploadFile();
-        });
+        
 
-    });*/
+    });
 
   </script>
 
@@ -89,7 +86,7 @@
 
           <div class="col-sm-3 col-md-3">
 
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search" action = "/eboard/eboard/public/ad_search.php" method = "post">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
               <div class="input-group-btn">
@@ -179,8 +176,8 @@
 
 <!-- Upload image -->
     <div class="col-md-6">
+      <h3> <span class="glyphicon glyphicon-picture"></span> Add one or more images </h3>
     <div class="form-group">
-        <label>Upload Image</label>
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-default btn-file">

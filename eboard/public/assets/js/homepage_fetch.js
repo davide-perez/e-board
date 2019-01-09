@@ -40,7 +40,6 @@ function setup(id){
 
     });
 
-    coverflow(id).on("click", function (index){document.getElementById("cacca").innerHTML = index;})
 }
 
 
