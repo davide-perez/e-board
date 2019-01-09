@@ -37,7 +37,7 @@
     $catName = isset($_GET['catName']) ? $_GET['catName'] : 'No category';
     $catDesc = isset($_GET['catDesc']) ? $_GET['catDesc'] : 'No category found';
 
-    $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, date_until, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ? AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id" );
+    $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ? AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id" );
 
     $stmt->bind_param('s', $catName);
 
@@ -175,7 +175,7 @@
               </h4>
               <p class="card-text"> <?php echo $res[1]; ?> </p>
               <?php
-               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[5] . '\')">Details</button>' ;
+               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">Details</button>' ;
               ?>
             </div>
           
@@ -277,12 +277,34 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="adTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h2 class="modal-title" id="adTitle"></h2>
       </div>
       <div class="modal-body" id = "adBody">
+
+
+
+
+
+        <div id = "modalContainer">
+          <div id = "modalImage">
+            
+          </div>
+          <br>
+          <p class = "lead" id = "adDescription">
+          </p>
+          <br>
+          <h3>Contacts</h3>
+          <hr>
+          <div id = "contactsPanel">
+          </div>
+          <br>
+
+
+        </div>
+
+
+
+
         
       </div>
       <div class="modal-footer">
@@ -293,7 +315,14 @@
 </div>
 
 <script type="text/javascript">
-  function fillModal (title) {
+  function fillModal (title, description, link, date_pub, username, mail, phone) {
+    
+    $('#adTitle').html('<span class="glyphicon glyphicon-pushpin"></span> ' + title);
+
+    $('#modalImage').css('background-image', 'url("' + link + '")');
+    $('#adDescription').html(description);
+    $('#contactsPanel').html('<p class = "lead"><span class="glyphicon glyphicon-user"></span> Published by <b>' + username + '</b> on date ' + date_pub + '</p> <p class = "lead"><span class="glyphicon glyphicon-envelope"></span> ' + mail + '</p> <p class = "lead"><span class="glyphicon glyphicon-phone"></span> ' + phone + '</p>');
+    //$('#adBody').html(title + " " + description + " " + link + " " + date_pub + " " + date_until + " " + username + " " + mail + " " + phone);
     $('#adModal').modal('show');
     
   }
