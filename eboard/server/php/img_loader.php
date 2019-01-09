@@ -4,12 +4,26 @@
 
 //also (and importantly) validate the $fname parameter to see if its valid and if it already exists! otherwise, overwriting is possible
 
+
+/**
+* This class is responsible for validating and loading images that have been uploaded via POST, and are located in
+* the $_FILES supervariable.
+*
+* Usage:
+* -Create an instance of the class. 1st arg: the value of the name attribute of the html input element used to send the file
+*  2nd arg: the name under which you want to save the file (just filename, folder is already set)
+* -Call do_upload() function and check its return value. If it returns true, then upload was successful. If it returns false,
+* an error has occured and image was not uploaded. Check the error by calling error_status.
+**/
 class ImageLoader{
 	
-
-	private $imgname; // $_FILES["imgToUpload"] or "imgToUpload"? Second one looks better
-	private $dest_dir; //read from config.ini
+	/**
+	* The name as used in the attribute of the related html input element.
+	*/
+	private $imgname; //will be used as $_FILES[$imgname]
+	private $dest_dir; //read from config.ini ?
 	private $fname; //given by user
+	private $new_path = NULL;
 
 
 
@@ -73,16 +87,17 @@ class ImageLoader{
 			$parts = explode(".", $_FILES[$this -> imgname]["name"]);
 			$newfilename = $this -> fname . '.' . end($parts);
 			$dest = $this -> dest_dir . $newfilename;
+			
 
 			if(!move_uploaded_file($_FILES[$this -> imgname]["tmp_name"], $dest)){
 				$this -> status = 7;
 			}
 			else{
-				echo "UPLOAD COMPLETE!";
+				$this -> new_path = $dest;
 			}
 
 		}
-		//true if its all right, error code otherwise (or better: ret false, option to check what happened by calling something such as "get error code". Check mysql to see how they do it)
+
 		return $this -> status == 0;
 
 	}
@@ -93,6 +108,12 @@ class ImageLoader{
 
 		return $this -> $status_map[$this -> status];
 
+	}
+
+
+
+	public function get_path(){
+		return $this -> new_path === NULL ? '' : $this -> new_path;
 	}
 
 
