@@ -13,7 +13,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$email = $_POST["inputEmail"];
 	$tel = $_POST["inputTel"];
 	$username = $_POST["inputUsername"];
-	$pw = $_POST["inputPassword"];
+	$pw = md5($_POST["inputPassword"]);
 
 
 	// First, control that email, telephone and username are not already present in the database

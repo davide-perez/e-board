@@ -222,7 +222,7 @@
      <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
       <button class = "btn btn-primary" data-toggle="collapse" data-target="#demo">Change password</button>
       <div id="demo" class="collapse " style = "padding-top: 20px;">
-      <form>
+      <form action = "change_pw.php" method = "post" id="pwForm">
         <div class="form-group">
           <label for="oldpw">Old password:</label>
           <input type="password" class="form-control" id="oldpw" placeholder="Old password">
@@ -377,6 +377,8 @@
 
   <script src="/eboard/eboard/public/assets/js/input_check.js"></script>
   <script src="/eboard/eboard/public/assets/js/fill_modal.js"></script>
+  <script src="/eboard/eboard/public/assets/js/pw_change.js"></script>
+
 
 
 

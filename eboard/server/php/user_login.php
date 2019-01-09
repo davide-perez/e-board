@@ -8,7 +8,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
 	$username = $_POST["inputUsername"];
-	$pwd = $_POST["inputPassword"];
+	$pwd = md5($_POST["inputPassword"]);
 
 
 

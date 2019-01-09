@@ -9,7 +9,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$conn = $db -> get_connection();
 
 
-	$sql = "SELECT title, ad_text, link FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id";
+	$sql = "SELECT title, ad_text, link, a.ad_id FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id";
 	$result = mysqli_query($conn, $sql);
 
 	$data = array();
@@ -38,7 +38,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		}
 
 		
-		 return array("title" => $res[0], "description" => $description, "image" => $res[2]);
+		 return array("title" => $res[0], "description" => $description, "image" => $res[2], "id" => $res[3]);
 
 
 	}
