@@ -39,4 +39,8 @@ function setup(id){
         textstyle: ".coverflow-text{color:#000000;text-align:center;font-family:Arial Rounded MT Bold,Arial;} .coverflow-text h1{font-size:14px;font-family:inherit;font-weight:normal;line-height:21px;} .coverflow-text h2{font-size:12px;font-family:inherit;font-weight:normal;} .coverflow-text a{color:#0000EE;}"
 
     });
+
+    coverflow(id).on("click", function (index){document.getElementById("cacca").innerHTML = index;})
 }
+
+

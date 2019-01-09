@@ -137,6 +137,9 @@
     </div>
         <div id="middle">
           <div id="player"></div>
+          <div id = "cacca">
+            
+          </div>
         </div>
         <div id="footer">
           <!-- Categories navbar -->
