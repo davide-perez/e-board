@@ -229,14 +229,14 @@
           <input type="password" class="form-control" id="oldpw" placeholder="Old password" name = "oldpw" required>
         </div>
         <div class="form-group">
-          <label for="newpw">New password:</label>
+          <label for="inputPassword">New password:</label>
           <input type="password" class="form-control" id="inputPassword" placeholder="New password" name="inputPassword" required>
         </div>
         <div class="form-group">
-          <label for="repeatpw">Repeat password:</label>
+          <label for="repeatPassword">Repeat password:</label>
           <input type="password" class="form-control" id="repeatPassword" placeholder="Repeat password" name = "repeatPassword" required>
         </div>
-        <button type = "submit" class = "btn btn-warning" id = "change_button">Change</button>
+        <button type = "button" class = "btn btn-warning" id = "change_button">Change</button>
   
     </form>
   </div>
@@ -378,6 +378,7 @@
 
   <script src="/eboard/eboard/public/assets/js/input_check.js"></script>
   <script src="/eboard/eboard/public/assets/js/fill_modal.js"></script>
+
   <script src="/eboard/eboard/public/assets/js/change_pw.js"></script>
 
 
