@@ -14,8 +14,8 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <!-- custom scripts 
-  <script src="/eboard/eboard/public/assets/js/user_fetch.js"></script>-->
+  
+  <script src="/eboard/eboard/public/assets/js/del_handler.js"></script>
 
   
   <link href="/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
   $db = new ConnectionFactory();
   $conn = $db -> get_connection();
 
-  $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id AND s.user_id = " . $_SESSION["LOGIN"]);
+  $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone, a.ad_id FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id AND s.user_id = " . $_SESSION["LOGIN"]);
 
   
   $stmt->execute();
@@ -275,8 +275,9 @@
               <p class="card-text"> <?php echo $res[1]; ?> </p>
               <?php
                echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">Details</button>' ;
+                echo '<button type="button" class="btn btn-danger" id="delete_button" onclick="del(' . $res[7] . ')">Delete</button>';
               ?>
-              <button type="button" class="btn btn-danger" id="delete_button">Delete</button>
+              
             </div>
           
         </div>

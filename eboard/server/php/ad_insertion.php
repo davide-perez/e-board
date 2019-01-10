@@ -1,4 +1,4 @@
-<?php
+ <?php
 //TODO: refactor code, maybe create two functions (one for uploading ad, one for uploading image) to simplify extension to more images if needed
 
 require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
