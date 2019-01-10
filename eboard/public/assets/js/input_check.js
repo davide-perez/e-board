@@ -68,3 +68,58 @@ function validate() {
     return true;
 }
 
+
+
+$('#register_button').click(function validate(event) {
+     // control the telephone number
+    if (!regEx.test(phoneField.value)) {
+        alert("Please insert a valid telephone number");
+    }
+
+    else if (pwField.value != repeatField.value) {
+        alert("You inserted two different passwords");
+    }
+
+    else if (usernameField.value.toUpperCase() == "admin".toUpperCase()) {
+        alert("admin is not a valid username");
+    }
+    
+
+    else {
+
+        var $form = $('#Registration');
+        var $inputs = $form.find("input");
+        var serializedData = $form.serialize();
+
+        request = $.ajax({
+            url: "/eboard/eboard/server/php/user_registration.php",
+            type: "post",
+            data: serializedData
+        });
+
+
+        request.done(function(response, textStatus, jqXHR){
+            console.log(response);
+            if (response == "mistake") {
+                
+                alert("Username or mail already in use.");
+                
+            }
+            else {
+                $form.submit();
+            }
+        });
+    }
+
+    
+
+
+
+});
+
+
+$('#inputEMail').blur(function(event) {
+    event.target.checkValidity();
+}).on('invalid', function(event) {
+    setTimeout(function() { $(event.target).focus();}, 50);
+});

@@ -8,6 +8,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
 	$password = md5($_POST["oldpw"]);
+	$newPW = md5($_POST["inputPassword"]);
 	$user_id = $_POST["user_id"];
 	
 
@@ -19,9 +20,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	
 	if ($result -> num_rows === 0) {echo 'not_existing';}
 	else {
-
+		$modify = mysqli_prepare($conn, "UPDATE standard_user SET password = ? WHERE user_id = ?");
+		mysqli_stmt_bind_param($modify, "ss", $newPW, $user_id);
+		mysqli_stmt_execute($modify);
 		echo "existing";
-
 	}
 
 	$stmt->close();

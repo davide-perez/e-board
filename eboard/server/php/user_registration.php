@@ -26,7 +26,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	// case they are already present
 	if($result -> num_rows > 0) {
 		// TODO
-		echo "eh no bello così non va bene";
+		echo "mistake";
 	}
 
 	// case they are not present
@@ -44,11 +44,11 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		$_SESSION["SURNAME"] = $surname;
 		$_SESSION["MAIL"] = $email;
 		$_SESSION["PHONE"] = $tel;
-		echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
+		echo 'inserted';
 	}
 
 
-	$insert->close();
+	
 	$conn->close();
 
 	

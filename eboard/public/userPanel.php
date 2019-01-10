@@ -222,7 +222,7 @@
      <div class = "col-md-6 col-lg-6 col-sm-12" style = "padding-top: 3px;">
       <button class = "btn btn-primary" data-toggle="collapse" data-target="#demo">Change password</button>
       <div id="demo" class="collapse " style = "padding-top: 20px;">
-      <form action = "/eboard/eboard/server/php/change_pw.php" method = "post" id="pwForm">
+      <form action = "/eboard/eboard/public/userPanel.php" method = "post" id="pwForm">
         <div class="form-group">
           <input type = "hidden" value = <?php echo '"'.$_SESSION["LOGIN"].'"'?> name= "user_id">
           <label for="oldpw" id="oldpwLabel">Old password:</label>
