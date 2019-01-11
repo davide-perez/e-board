@@ -47,32 +47,28 @@ if (phoneField != null)
 
 // function that checks some inputs
 
-function validate() {
-    // control the telephone number
-    if (!regEx.test(phoneField.value)) {
-        alert("Please insert a valid telephone number");
-        return false;
-    }
-
-    if (pwField.value != repeatField.value) {
-        alert("You inserted two different passwords");
-        return false;
-    }
-
-    if (usernameField.value.toUpperCase() == "admin".toUpperCase()) {
-        alert("admin is not a valid username");
-        return false;
-    }
-
-
-    return true;
-}
 
 
 
 $('#register_button').click(function validate(event) {
-     // control the telephone number
-    if (!regEx.test(phoneField.value)) {
+     // TODO all controls
+    if(!document.getElementById("inputName").checkValidity())
+        alert("Please insert a name");
+    else if(!document.getElementById("inputSurname").checkValidity())
+        alert("Please insert a surname");
+    else if(!document.getElementById("inputEmail").checkValidity())
+        alert("Please insert a valid email");
+    else if(!document.getElementById("inputTel").checkValidity())
+        alert("Please insert a phone number");
+    else if(!document.getElementById("inputUsername").checkValidity())
+        alert("Please insert a username");
+    else if(!document.getElementById("inputPassword").checkValidity())
+        alert("Please insert a password");
+    else if(!document.getElementById("repeatPassword").checkValidity())
+        alert("Please confirm your password");
+
+
+    else if (!regEx.test(phoneField.value)) {
         alert("Please insert a valid telephone number");
     }
 
@@ -118,8 +114,3 @@ $('#register_button').click(function validate(event) {
 });
 
 
-$('#inputEMail').blur(function(event) {
-    event.target.checkValidity();
-}).on('invalid', function(event) {
-    setTimeout(function() { $(event.target).focus();}, 50);
-});

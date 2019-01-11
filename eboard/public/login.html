@@ -115,7 +115,7 @@
               <h2><span class="glyphicon glyphicon-log-in"></span> Login</h2>
               <p>Please enter your username and password</p>
             </div>
-            <form id="Login" action = "/eboard/eboard/server/php/user_login.php" method = "post">
+            <form id="Login" action = "/eboard/eboard/public/userPanel.php" method = "post">
 
             <div class="form-group">
               <input type="text" class="form-control" id="inputUsername" placeholder="Username" name = "inputUsername" required>
@@ -127,7 +127,7 @@
             <div class="newUser">
               <a href="/eboard/eboard/public/registration.html">Click here to register</a>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-primary" id = "login_button">Login</button>
             </form>
           </div>
         </div>
@@ -186,6 +186,9 @@
       </div>
 
   </div>
+
+
+  <script src="/eboard/eboard/public/assets/js/login_check.js"></script>
 
 
   

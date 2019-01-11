@@ -1,9 +1,17 @@
 $('#change_button').click(function validatePW(event) {
-
+	var oldPw = document.getElementById("oldpw");
 	var pwField = document.getElementById("inputPassword");
 	var repeatField = document.getElementById("repeatPassword");
 
-	if (pwField.value == repeatField.value) {
+
+	if(!oldPw.checkValidity())
+        alert("Please insert your old password");
+    else if(!pwField.checkValidity())
+        alert("Please insert a new password");
+    else if(!repeatField.checkValidity())
+        alert("Please repeat your new password");
+
+	else if (pwField.value == repeatField.value) {
 
 		var $form = $('#pwForm');
 		var $inputs = $form.find("input");

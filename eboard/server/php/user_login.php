@@ -19,7 +19,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$result = mysqli_stmt_get_result($stmt);
 
 	
-	if ($result -> num_rows === 0) {echo '<script>document.location.href=""</script>';}
+	if ($result -> num_rows === 0) {echo 'mistake';}
 	else {
 
 		$row = $result -> fetch_assoc();
@@ -32,7 +32,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		$_SESSION["SURNAME"] = $row["surname"];
 		$_SESSION["MAIL"] = $row["mail"];
 		$_SESSION["PHONE"] = $row["phone"];
-		echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
+		echo 'correct';
 
 	}
 
