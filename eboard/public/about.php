@@ -36,6 +36,8 @@
 
   </script>
 
+  <?php session_start();?>
+
 
   <!-- Main container-->
   <div id="container">
