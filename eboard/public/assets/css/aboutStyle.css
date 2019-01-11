@@ -1,0 +1,43 @@
+#middle {
+  padding-left:50px; 
+	padding-right: 50px; 
+	height:100%;  
+	padding-top: 50px;
+   	padding-bottom:100px;
+    
+}
+
+.photoPanel {
+	margin:auto;
+	border-radius: 50%;
+	width: 350px;
+    height: 350px;
+    background: yellow;
+    border: 3px solid red;
+  	background-repeat:no-repeat; 
+  	background-position:center; 
+  	background-size:cover; 
+}
+
+.perez {
+	background-image:url("/eboard/eboard/public/assets/images/pencil.jpg"); 
+
+}
+
+.cremo {
+		background-image:url("/eboard/eboard/public/assets/images/pencil.jpg"); 
+
+}
+
+.perez:hover{
+	background-image:url("/eboard/eboard/public/assets/images/jumbo.png"); 
+	
+}
+.cremo:hover{
+	background-image:url("/eboard/eboard/public/assets/images/jumbo.png"); 
+	
+}
+
+.glyphicon-menu-down {
+    font-size: 35px;
+}

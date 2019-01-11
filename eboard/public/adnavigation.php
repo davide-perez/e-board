@@ -246,17 +246,17 @@
 
               <li class = "bottomLI"><a href="/eboard/eboard/public/homepage.php"><span class="glyphicon glyphicon-calendar"></span> Newest</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
+              <li class = <?php if($catName == 'rentals') echo '"bottomLI active"'; else echo '"bottomLI"';?>><a href="#"><span class="glyphicon glyphicon-home"></span> For rent</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI active"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+              <li class = <?php if($catName == 'jobs') echo '"bottomLI active"'; else echo '"bottomLI"';?>><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
+              <li class = <?php if($catName == 'itemsale') echo '"bottomLI active"'; else echo '"bottomLI"';?>><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Items for sale</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-globe"></span> Events</a></li>
+              <li class = <?php if($catName == 'events') echo '"bottomLI active"'; else echo '"bottomLI"';?>><a href="#"><span class="glyphicon glyphicon-globe"></span> Events</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-book"></span> Lectures</a></li>
+              <li class = <?php if($catName == 'lectures') echo '"bottomLI active"'; else echo '"bottomLI"';?>><a href="#"><span class="glyphicon glyphicon-book"></span> Lectures</a></li>
               <li class="divider-vertical"></li>
-              <li class = "bottomLI"><a href="#"><span class="glyphicon glyphicon-th"></span> Other</a></li>
+              <li class = <?php if($catName == 'others') echo '"bottomLI active"'; else echo '"bottomLI"';?>><a href="#"><span class="glyphicon glyphicon-th"></span> Other</a></li>
 
             </ul>
 
