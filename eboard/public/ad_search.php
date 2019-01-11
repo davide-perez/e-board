@@ -99,7 +99,7 @@
                 
               
             ?>
-            <li><a href="#">About</a></li>
+            <li><a href="/eboard/eboard/public/about.php">About</a></li>
 
 
           </ul>

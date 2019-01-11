@@ -92,7 +92,7 @@
 
             <li><a href="/eboard/eboard/public/homepage.php">E-Board</a></li>
             <li><a href="/eboard/eboard/public/post_ad.php">Post an ad</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/eboard/eboard/public/about.php">About</a></li>
 
 
           </ul>

@@ -78,7 +78,7 @@
 
             <li><a href="/eboard/eboard/public/homepage.php">E-Board</a></li>
             <li class = "active"><a href="">Post an ad</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/eboard/eboard/public/about.php">About</a></li>
 
 
           </ul>
