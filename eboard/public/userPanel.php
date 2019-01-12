@@ -135,12 +135,12 @@
     <!-- MIDDLE -->
     <div id="middle" style = "padding-left:50px; padding-right: 50px; padding-top: 20px; height:100%;  
    padding-bottom:50px;">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+      <div id="myCarousel1" class="carousel slide" data-ride="carousel" >
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel1" data-slide-to="1"></li>
+    <li data-target="#myCarousel1" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -172,11 +172,11 @@
   </div>
 
   <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+  <a class="left carousel-control" href="#myCarousel1" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <a class="right carousel-control" href="#myCarousel1" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
@@ -261,7 +261,25 @@
 
   <div class="row" id ="personal_ads">
 
-    <?php while($res = mysqli_fetch_row($result)) { ?>
+    <?php while($res = mysqli_fetch_row($result)) { 
+      $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+      $gallery->bind_param('s', $res[7]);
+
+
+      $gallery->execute();
+      $resultGallery = $gallery->get_result();
+      $images = '';
+      if ($resultGallery -> num_rows != 0) {
+        $hasGallery = "true";
+        while($myimage = mysqli_fetch_row($resultGallery)) {
+          $images = $images . " " . $myimage[0];
+          }
+        $images = trim($images);
+      }
+      else
+        $hasGallery = "false";
+
+    ?>
 
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
           
@@ -270,11 +288,11 @@
 
               </div>
               <h4 class="card-title">
-                <?php echo '<a href="javascript:fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">' .   $res[0] . '</a>'; ?> 
+                <?php echo '<a href="javascript:fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">' .   $res[0] . '</a>'; ?> 
               </h4>
               <p class="card-text"> <?php echo $res[1]; ?> </p>
               <?php
-               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">Details</button>' ;
+               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">Details</button>' ;
                 echo '<button type="button" class="btn btn-danger" id="delete_button" onclick="del(' . $res[7] . ')">Delete</button>';
               ?>
               
