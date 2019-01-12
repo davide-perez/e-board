@@ -24,7 +24,27 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 
 	$data = array();
 	
-	$obj = create_obj($row);
+	
+
+
+	$gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+    $gallery->bind_param('s', $ad_id);
+
+
+    $gallery->execute();
+    $resultGallery = $gallery->get_result();
+    $images = '';
+    if ($resultGallery -> num_rows != 0) {
+      	$hasGallery = "true";
+      	while($myimage = mysqli_fetch_row($resultGallery)) {
+        	$images = $images . " " . $myimage[0];
+      	}
+      	$images = trim($images);
+    }
+    else
+      	$hasGallery = "false";
+
+    $obj = create_obj($row, $images, $hasGallery);
 	array_push($data, $obj);
 	
 
@@ -39,9 +59,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	/**
 	* Creates an array representing the object that will be read
 	*/
-	function create_obj($res){
+	function create_obj($res, $images, $hasGallery){
 		
-		 return array("title" => $res["title"], "description" => $res["ad_text"], "image" => $res["link"], "date" => $res["date_published"], "username" => $res["username"], "mail" => $res["mail"], "phone" =>$res["phone"]);
+		 return array("title" => $res["title"], "description" => $res["ad_text"], "image" => $res["link"], "date" => $res["date_published"], "username" => $res["username"], "mail" => $res["mail"], "phone" =>$res["phone"], "gallery" => $images, "hasGallery" => $hasGallery);
 
 	}
 
