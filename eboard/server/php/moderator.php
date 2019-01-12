@@ -14,6 +14,10 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+  <script src="/eboard/eboard/public/assets/js/mod.js"></script>
+  <script src="/eboard/eboard/public/assets/js/fill_modal.js"></script>
+  <link href = "/eboard/eboard/public/assets/css/modstyle.css" rel="stylesheet" type="text/css">
+
 
 
 </head>
@@ -30,7 +34,7 @@
     */
     function selectWithStatus($conn, $status){
 
-      $stmt = $conn->prepare("SELECT a.ad_id, u.username, u.mail, a.title, a.category, a.date_published, a.status FROM ad AS a INNER JOIN standard_user AS u ON a.user_id = u.user_id WHERE a.status = ?");
+      $stmt = $conn->prepare("SELECT a.ad_id, u.username, u.mail, a.title, a.category, a.date_published, a.status, a.ad_text, i.link FROM ad AS a INNER JOIN standard_user AS u ON a.user_id = u.user_id INNER JOIN image AS i ON a.ad_id = i.ad_id WHERE a.status = ?");
       $stmt->bind_param('i', $status);
       $stmt->execute();
 
@@ -45,17 +49,6 @@
 ?>
 
 <script>
-  /**
-  Called when the document root has been completely loaded. Sets the tab counter
-  by reading the number of rows of each table, instead of repeating the query to
-  get the length of the result set, which may be time-consuming when having many records.
-  */
-  function setTabsCounter(){
-    $("#approved-count").text($("#approved-ads").find("tbody > tr").length);
-    $("#pending-count").text($("#pending-ads").find("tbody > tr").length);
-    $("#outdated-count").text($("#outdated-ads").find("tbody > tr").length);
-    $("#rejected-count").text($("#rejected-ads").find("tbody > tr").length);
-  }
 
   $(document).ready( _ => { setTabsCounter(); } );
 
@@ -92,14 +85,14 @@
           $result = selectWithStatus($conn, 1);
           while($res = mysqli_fetch_row($result)) { 
         ?>
-          <tr>
+          <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
             <td><?php echo $res[1]; ?></td>
             <td><?php echo $res[2]; ?></td>
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><a href="#">Details</a></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'approved\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -128,7 +121,7 @@
           $result = selectWithStatus($conn, 2);
           while($res = mysqli_fetch_row($result)) { 
         ?>
-          <tr>
+          <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
             <td><?php echo $res[1]; ?></td>
             <td><?php echo $res[2]; ?></td>
@@ -148,7 +141,7 @@
     <div class="table-responsive">          
       <table class="table">
         <thead>
-          <tr>
+          <tr class="clickable-row">
             <th>ID</th>
             <th>User</th>
             <th>E-mail</th>
@@ -163,7 +156,7 @@
           $result = selectWithStatus($conn, 4);
           while($res = mysqli_fetch_row($result)) { 
         ?>
-          <tr>
+          <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
             <td><?php echo $res[1]; ?></td>
             <td><?php echo $res[2]; ?></td>
@@ -198,7 +191,7 @@
           $result = selectWithStatus($conn, 3);
           while($res = mysqli_fetch_row($result)) { 
         ?>
-          <tr>
+          <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
             <td><?php echo $res[1]; ?></td>
             <td><?php echo $res[2]; ?></td>
@@ -217,6 +210,42 @@
 </div>
 
 </div>
+
+
+ <!-- Modal experiments -->
+  <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="adModal" aria-hidden="true" style = "padding-top: 60px; padding-bottom: 60px">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="adTitle"></h2>
+      </div>
+      <div class="modal-body" id = "adBody">
+
+        <div id = "modalContainer">
+          <div id = "modalImage">
+            
+          </div>
+          <br>
+          <p class = "lead" id = "adDescription">
+          </p>
+          <br>
+          <h3>Actions</h3>
+          <hr>
+          <div id = "contactsPanel">
+          </div>
+          <br>
+
+
+        </div>
+   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </body>
 

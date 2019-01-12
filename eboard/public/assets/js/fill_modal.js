@@ -9,3 +9,18 @@ function fillModal (title, description, link, date_pub, username, mail, phone) {
     $('#adModal').modal('show');
     
   }
+
+
+function fillModalMod (title, description, link, username, adclass) {
+    
+    $('#adTitle').html('<span class="glyphicon glyphicon-pushpin"></span> ' + title);
+
+    $('#modalImage').css('background-image', 'url("' + link + '")');
+    $('#adDescription').html(description);
+    $('#contactsPanel').html('<p class = "lead"><span class="glyphicon glyphicon-user"></span> Published by <b>' + username + '</b></p>');
+
+    setActions(adclass);
+
+    $('#adModal').modal('show');
+    
+  }
