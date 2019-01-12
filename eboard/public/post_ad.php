@@ -162,7 +162,7 @@
     <div class="form-group">
       <label for="description">Advertisement text (<span id = "character_num">5000</span> chars available):</label>
 
-      <textarea class="form-control" rows="5" id="description" name = "description"></textarea>
+      <textarea class="form-control" rows="5" id="description" name = "description" required></textarea>
     </div>
   </div>
 </div>
@@ -175,8 +175,8 @@
     <div class = "row">
 
 <!-- Upload image -->
-    <div class="col-md-6">
-      <h3> <span class="glyphicon glyphicon-picture"></span> Add one or more images </h3>
+    <div class="col-md-6 col-lg-6 col-sm-12">
+      <h3> <span class="glyphicon glyphicon-picture"></span> Add a cover image (optional) </h3>
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-btn">
@@ -188,25 +188,49 @@
         </div>
         <img id='img-upload'/>
     </div>
-</div>
+  </div>
+
+    <div class = "col-md-6 col-sm-12 col-lg-6">
+      <h3> <span class="glyphicon glyphicon-picture"></span> Create a gallery of images (optional) </h3>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgToUpload2" name="imgToUpload2" multiple>
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+        </div>
+        <img id='img-upload2'/>
+    </div>
+
+    </div>
+  </div>
+   <hr>
+
 <!-- -->
-
-
+  
+  <div class = "row">
   <div class = "col-md-6 col-lg-6 col-sm-12">
     <h3> <span class="glyphicon glyphicon-envelope"></span> Email contact:  
       <?php 
         echo $_SESSION["MAIL"];
       ?>
     </h3>
+  </div>
+  <div class = "col-md-6 col-lg-6 col-sm-12">
+
     <h3> <span class="glyphicon glyphicon-phone"></span> Phone contact:  
       <?php 
         echo $_SESSION["PHONE"];
       ?>
     </h3>
+  </div>
     
     
   </div>
-</div>
+
+
 
 
   </div> <!-- well div-->
