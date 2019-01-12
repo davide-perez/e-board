@@ -37,7 +37,7 @@
     $catName = isset($_GET['catName']) ? $_GET['catName'] : 'No category';
     $catDesc = isset($_GET['catDesc']) ? $_GET['catDesc'] : 'No category found';
 
-    $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ? AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id" );
+    $stmt = $conn->prepare("SELECT title, ad_text, link, date_published, username, mail, phone, a.ad_id FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND category = ? AND status = 1 INNER JOIN standard_user AS s ON a.user_id = s.user_id" );
 
     $stmt->bind_param('s', $catName);
 
@@ -162,7 +162,24 @@
 
       <div class="row">
 
-      	<?php while($res = mysqli_fetch_row($result)) { ?>
+      	<?php while($res = mysqli_fetch_row($result)) {
+          $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+          $gallery->bind_param('s', $res[7]);
+
+
+          $gallery->execute();
+          $resultGallery = $gallery->get_result();
+          $images = '';
+          if ($resultGallery -> num_rows != 0) {
+            $hasGallery = "true";
+            while($myimage = mysqli_fetch_row($resultGallery)) {
+              $images = $images . " " . $myimage[0];
+            }
+            $images = trim($images);
+          }
+          else
+            $hasGallery = "false";
+        ?>
 
       	<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
           
@@ -171,11 +188,11 @@
 
             	</div>
               <h4 class="card-title">
-                <?php echo '<a href="javascript:fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">' .   $res[0] . '</a>'; ?> 
+                <?php echo '<a href="javascript:fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">' .   $res[0] . '</a>'; ?> 
               </h4>
               <p class="card-text"> <?php echo $res[1]; ?> </p>
               <?php
-               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\')">Details</button>' ;
+               echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">Details</button>' ;
               ?>
             </div>
           
