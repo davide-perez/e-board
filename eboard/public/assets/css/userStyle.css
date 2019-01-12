@@ -66,3 +66,7 @@
 .modal-body{
     overflow-y: auto;
 }
+
+#carousel-inner {
+	height: 300px;
+}
