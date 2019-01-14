@@ -19,29 +19,31 @@
 
       case "approved":
 
-        appendButton("approved-btn", "Revoke", () => {revoke(id)});
+        appendButton("revoke-btn-1", "revoke-btn btn-warning", "Revoke", () => {revoke(id)});
 
       break;
       case "pending":
 
-        appendButton("pending-btn", "Accept", () => {approve(id)});
+        appendButton("accept-btn-2", "accept-btn btn-success", "Accept", () => {approve(id)});
+        appendButton("reject-btn-2", "reject-btn btn-warning", "Reject", () => {reject(id)});
 
 
       break;
       case "outdated":
 
-        appendButton("outdated-btn", "Restore", () => {approve(id)});
+        appendButton("restore-btn-4", "restore-btn btn-info", "Restore", () => {restore(id)});
+        appendButton("delete-btn-4", "delete-btn btn-danger", "Delete", () => {del(id)});
 
 
       break;
       case "rejected": 
 
-        appendButton("revoke-btn", "Restore", () => {accept(id)});
-        appendButton("revoke-btn", "Delete", () => {revoke(id)});
-
+        appendButton("restore-btn-3", "restore-btn btn-info", "Restore", () => {restore(id)});
+        appendButton("delete-btn-3", "delete-btn btn-danger", "Delete", () => {del(id)});
 
 
       break;
+
 
     }
 
@@ -49,22 +51,28 @@
 }
 
 
-function appendButton(id, caption, evt){
-
-  $('<input type="button" id="' + id + '" value="' + caption + '">').appendTo("#contactsPanel");
-  $("#" + id).click(evt);
-
-}
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+* The following functions take as argument the id of an ad, then send it to the server along with a string representing the
+* command to execute on such ad. The possible actions are:
+*
+* -Approve: approve the ad, making it visible on the website. Only ads that are pending can be approved
+* -Revoke: move an active ad back to pending, thus making it no more visible on the site
+* -Reject: reject a pending ad, moving it in the rejected queue. There the ads can either be deleted permanently,
+*          or restored. However, they are periodically deleted from the database.
+* -Restore: an ad that is either outdated or rejected can be moved back in the pending queue via "restore" operation.
+* -Delete: implemented in function del. The passed ad is deleted permanently from the database and the site.
+* -Delete all: implemented in delete_all. Empties the rejected/outdated query, deleting permanently all the ads in it.
+*
+*
+*/
 
 function revoke(id){
 
   if(confirm("Are you sure you want to revoke this ad? It will be moved back in the pending queue and will be no more visible on the site until it will be approved again.")){
     requestForAction(id, "revoke");
   }
-  else{
-
-  }
+  else{}
 
 }
 
@@ -85,6 +93,44 @@ function reject(id){
 }
 
 
+function restore(id){
+  //create service to delete ad that are rejected from some time
+  if(confirm("Are you sure you want to restore this ad? It will be moved in the pending queue.")){
+    requestForAction(id, "restore");
+  }
+  else{}
+
+}
+
+
+function del(id){
+  //create service to delete ad that are rejected from some time
+  if(confirm("Are you sure you want to delete this ad? It will be removed permanently from the website!")){
+    requestForAction(id, "delete");
+  }
+  else{}
+
+}
+
+
+function delete_all(id){
+  //create service to delete ad that are rejected from some time
+  if(confirm("Are you sure you want to delete all the ads in the queue? They will be removed permanently from the website!")){
+    requestForAction(id, "delete_all");
+  }
+  else{}
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+* This utility function is used to implement a request to the server for an operation on a specific ad.
+* Takes as params the id of the ad and a string representing an action (see the above commands and management_service.php).
+* Requests are implemented as AJAX post calls.
+*/
 function requestForAction(id, action){
 
   var ad_id = id + "";
@@ -98,10 +144,29 @@ function requestForAction(id, action){
 }
 
 
-
+/**
+* Retrieves the id of an ad, given one of the four classnames ("approved, rejected, outdated, pending")
+*
+*/
 function getID(adclass){
 
   var id = $("#" + adclass + "-ads").find("tbody tr:first").children(":first").text();
     return id;
+
+}
+
+
+/**
+* Shorthand function to create a button and append it to the
+* Params:
+* -a unique id
+* -button's class name
+* -button's text
+* -function to perform on click
+*/
+function appendButton(id, clazz, caption, evt){
+
+  $('<input type="button" id="' + id + '" class ="' + clazz + '" value="' + caption + '">').appendTo("#contactsPanel");
+  $("#" + id).click(evt);
 
 }

@@ -170,7 +170,10 @@
         </tbody>
       </table>
     </div>
-    
+    <!-- Insert trash button here -->
+    <button type="button" id="del-outdated" class="btn btn-danger bottom-btn">
+      <span class="glyphicon glyphicon-trash"></span> Delete all
+  </button>
   </div>
 
   <div id="rejected-ads" class="tab-pane fade">
@@ -205,7 +208,10 @@
         </tbody>
       </table>
     </div>
-    
+    <!-- Insert trash button here -->
+    <button type="button" id="del-rejected" class="btn btn-danger bottom-btn">
+      <span class="glyphicon glyphicon-trash"></span> Delete all
+  </button>
   </div>
 
 </div>
@@ -233,6 +239,9 @@
           <h3>Actions</h3>
           <hr>
           <div id = "contactsPanel">
+            <div id="buttonsPanel">
+              Per qualche strano motivo non si vede
+            </div>
           </div>
           <br>
 

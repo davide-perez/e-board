@@ -44,7 +44,7 @@ function fillModalMod (title, description, link, username, adclass) {
     $('#modalImage').css('background-image', 'url("' + link + '")');
     $('#adDescription').html(description);
     $('#contactsPanel').html('<p class = "lead"><span class="glyphicon glyphicon-user"></span> Published by <b>' + username + '</b></p>');
-
+    
     setActions(adclass);
 
     $('#adModal').modal('show');

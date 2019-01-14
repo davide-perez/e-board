@@ -1,7 +1,13 @@
+.bottom-btn{
+	position:absolute;
+	right:5px;
+	bottom:5px;
+}
+
+
 #modalContainer{
 	height:500px;
-	width:100%;
-	
+	width:100%;	
 }
 
 #modalImage {
