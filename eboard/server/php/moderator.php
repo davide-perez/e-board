@@ -17,6 +17,7 @@
   <script src="/eboard/eboard/public/assets/js/mod.js"></script>
   <script src="/eboard/eboard/public/assets/js/fill_modal.js"></script>
   <link href = "/eboard/eboard/public/assets/css/modstyle.css" rel="stylesheet" type="text/css">
+  <link href = "/eboard/eboard/public/assets/css/navbar.css" rel="stylesheet" type="text/css">
 
 
 
@@ -41,6 +42,24 @@
       return $stmt->get_result();
     }
 
+
+    function getStatistics($conn){
+
+      $keys = array('active', 'pending', 'rejected', 'outdated');
+      $values = array();
+
+      $stmt -> $conn -> prepare("SELECT a.status AS 'ad_status', COUNT(a.ad_id) AS 'count' FROM ad AS a GROUP BY status");
+      $stmt -> execute();
+
+      $result = $stmt -> get_result();
+
+
+
+      return $stmt -> get_result();
+
+    }
+
+
     $db = new ConnectionFactory();
     $conn = $db -> get_connection();
 
@@ -53,8 +72,77 @@
   $(document).ready( _ => { setTabsCounter(); } );
 
 </script>
+  <div id="container">
 
-<div class="container">
+    <!-- HEADER-->
+    <div id="header">
+    <!-- Categories navbar -->
+      <nav class="navbar navbar-default">
+
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+
+          </button>
+
+          <div class="navbar-brand">
+          <span>
+            <img src="/eboard/eboard/public/assets/images/logo.png" height = "50px" alt="">
+          </span>
+             
+          </div>
+
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav navbar-left">
+
+
+          </ul>
+
+
+          <div class="col-sm-3 col-md-3">
+
+            <form class="navbar-form" role="search" action = "/eboard/eboard/public/ad_search.php" method = "post">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+
+            </div>
+            
+        </div>
+        </form>
+        </div>
+
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class = "active"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, admin!
+            </a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+          </ul>
+            
+        </div><!--/.nav-collapse -->
+
+      </div><!--/.container-fluid -->
+      </nav>
+    </div>
+
+<div id="middle" class="container">
+
+  <div class="jumbotron">
+      <h1><span class="glyphicon glyphicon-pushpin"></span> Post your ad</h1> 
+      <p>Write your personal ad. Select the category, add images and insert all the information you want! Every ad needs to be accepted before being posted on the board. Please do not include sensitive information, offensive or off-topic contents.</p> 
+  </div>
+
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#approved-ads">Approved(<span id="approved-count"></span>)</a></li>
@@ -251,6 +339,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 
