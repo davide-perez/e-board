@@ -126,7 +126,7 @@
     <!-- MIDDLE -->
     <div id="middle">
 
-    <form id="ad-submit" action="/eboard/eboard/server/php/ad_insertion.php" method="POST" enctype="multipart/form-data">
+    <form id="ad-submit" action="/eboard/eboard/server/php/ad_insertion.php" method="POST" enctype="multipart/form-data"  onsubmit = "return validate_inputs()">
 
     <div class = "well">
     <div class = "row">
@@ -303,6 +303,7 @@
 
   <script src="/eboard/eboard/public/assets/js/post_check.js"></script>
   <script src="/eboard/eboard/public/assets/js/upload_image.js"></script>
+
   
 
 

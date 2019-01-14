@@ -79,6 +79,10 @@ $('#register_button').click(function validate(event) {
     else if (usernameField.value.toUpperCase() == "admin".toUpperCase()) {
         alert("admin is not a valid username");
     }
+
+    else if (usernameField.value.length >30) {
+        alert("username is too long");
+    }
     
 
     else {

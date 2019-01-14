@@ -53,12 +53,14 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 
 	// insert ad in database
 	$insert = mysqli_prepare($conn, "INSERT INTO ad (title, category, ad_text, status, date_published, 	date_until, user_id) VALUES (?, ?, ?, 1, ?, ?, ?)");
-	mysqli_stmt_bind_param($insert, "ssssss", $title, $cat, $descr, $published, $until, $_SESSION["LOGIN"]);
+    $cleanedDescr = cleanDescr($descr);
+    $cleanedTitle = cleanDescr($title);
+	mysqli_stmt_bind_param($insert, "ssssss", $cleanedTitle, $cat, $cleanedDescr, $published, $until, $_SESSION["LOGIN"]);
 	mysqli_stmt_execute($insert);
 
     $img_only = 0; //will be changed then
 
-    if(isset($_POST["imgToUpload"])) {
+    if($_FILES["imgToUpload"]["size"] != 0) {
     $fname = "img" . mysqli_insert_id($conn);
 	$uploader = new ImageLoader("imgToUpload", $fname);
 
@@ -119,7 +121,17 @@ else {
     
 
 
+    function cleanDescr($description) {
+        $string = str_replace("\n", " ", $description);
+        $string = str_replace("\r", " ", $string);
+        $string = str_replace("  ", " ", $string);
+        $string = preg_replace('/\s+/', ' ', $string);
+        $string = str_replace("€", " euro", $string);
+        $string = str_replace("$", " dollar", $string);
+        $string = str_replace("'", "\'", $string);
 
+        return $string;
+    }
 
 
 
