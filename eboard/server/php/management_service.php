@@ -28,8 +28,11 @@
         case "delete":
             delete($conn, $id);
         break;
-        case "delete_all":
-            delete_all($conn);
+        case "delete_all_rejected":
+            delete_all_rejected($conn);
+        break;
+        case "delete_all_outdated":
+            delete_all_outdated($conn);
         break;
         default:
     		echo "Unknown command.";
@@ -122,8 +125,7 @@
 
 
 
-//when clicking a trashcan button
-    function delete_all($conn){
+    function delete_all_rejected($conn){
 
         $stmt = $conn -> prepare("DELETE FROM ad WHERE status = 3");
         if($stmt === FALSE){
@@ -134,13 +136,13 @@
 
 
 
-    //function outdate: implemented as a periodic database event 
+    function delete_all_outdated($conn){
 
-
-    //function delete_all: implement it periodically also?
-
-
-
-
+        $stmt = $conn -> prepare("DELETE FROM ad WHERE status = 4");
+        if($stmt === FALSE){
+            echo $conn -> error;
+        }
+        mysqli_stmt_execute($stmt);
+    }
 
 ?>
