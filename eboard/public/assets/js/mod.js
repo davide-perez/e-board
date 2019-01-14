@@ -14,25 +14,31 @@
   function setActions(adclass){
 
   var id = getID(adclass);
-  console.log("AD's id: " + id);
 
     switch(adclass){
 
       case "approved":
 
-        appendButton("revoke-btn", "Revoke", revoke);
+        appendButton("approved-btn", "Revoke", () => {revoke(id)});
 
       break;
       case "pending":
 
+        appendButton("pending-btn", "Accept", () => {approve(id)});
 
 
       break;
       case "outdated":
 
+        appendButton("outdated-btn", "Restore", () => {approve(id)});
+
 
       break;
       case "rejected": 
+
+        appendButton("revoke-btn", "Restore", () => {accept(id)});
+        appendButton("revoke-btn", "Delete", () => {revoke(id)});
+
 
 
       break;
@@ -53,10 +59,8 @@ function appendButton(id, caption, evt){
 
 function revoke(id){
 
-  if(confirm('Are you sure you want to revoke this ad? It will be marked as "pending" and will no more be visible until it is approved again.')){
-    alert("Ad revoked");
-    //do ajax stuff + redirect on the pending page
-    //mail service please: https://stackoverflow.com/questions/15965376/how-to-configure-xampp-to-send-mail-from-localhost
+  if(confirm("Are you sure you want to revoke this ad? It will be moved back in the pending queue and will be no more visible on the site until it will be approved again.")){
+    requestForAction(id, "revoke");
   }
   else{
 
@@ -64,8 +68,34 @@ function revoke(id){
 
 }
 
+function approve(id){
+
+  requestForAction(id, "approve");
+
+}
 
 
+function reject(id){
+  //create service to delete ad that are rejected from some time
+  if(confirm("Are you sure you want to reject this ad? It will be moved in the rejected queue.")){
+    requestForAction(id, "reject");
+  }
+  else{}
+
+}
+
+
+function requestForAction(id, action){
+
+  var ad_id = id + "";
+  //do ajax stuff + redirect on the pending page
+  //mail service please: https://stackoverflow.com/questions/15965376/how-to-configure-xampp-to-send-mail-from-localhost
+  $.post('/eboard/eboard/server/php/management_service.php', {idVal: ad_id, command: action})
+  .done(function(msg){ alert("Done: " + msg); document.location.reload();})
+  .fail(function(xhr, status, error) { alert("Request on" + ad_id + " failed with status " + status + ". Reason: " + error); });
+
+
+}
 
 
 

@@ -128,7 +128,7 @@
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><a href="#">Details</a></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'pending\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -138,10 +138,11 @@
   </div>
 
   <div id="outdated-ads" class="tab-pane fade">
+
     <div class="table-responsive">          
       <table class="table">
         <thead>
-          <tr class="clickable-row">
+          <tr>
             <th>ID</th>
             <th>User</th>
             <th>E-mail</th>
@@ -163,7 +164,7 @@
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><a href="#">Details</a></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'outdated\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -198,7 +199,7 @@
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><a href="#">Details</a></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'rejected\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
