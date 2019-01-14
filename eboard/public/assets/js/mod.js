@@ -19,27 +19,27 @@
 
       case "approved":
 
-        appendButton("revoke-btn-1", "revoke-btn btn-warning", "Revoke", () => {revoke(id)});
+        appendButton("revoke-btn-1", "revoke-btn btn-warning btn", "Revoke", "Revert the state of this ad to pending", () => {revoke(id)});
 
       break;
       case "pending":
 
-        appendButton("accept-btn-2", "accept-btn btn-success", "Accept", () => {approve(id)});
-        appendButton("reject-btn-2", "reject-btn btn-warning", "Reject", () => {reject(id)});
+        appendButton("accept-btn-2", "accept-btn btn-success btn", "Accept", "Accept this ad and publish it", () => {approve(id)});
+        appendButton("reject-btn-2", "reject-btn btn-warning btn", "Reject", "Do not allow this ad to be published", () => {reject(id)});
 
 
       break;
       case "outdated":
 
-        appendButton("restore-btn-4", "restore-btn btn-info", "Restore", () => {restore(id)});
-        appendButton("delete-btn-4", "delete-btn btn-danger", "Delete", () => {del(id)});
+        appendButton("restore-btn-4", "restore-btn btn-info btn", "Restore", "Restore this ad and place it back in the pending queue", () => {restore(id)});
+        appendButton("delete-btn-4", "delete-btn btn-danger btn", "Delete", "Delete permanently this ad", () => {del(id)});
 
 
       break;
       case "rejected": 
 
-        appendButton("restore-btn-3", "restore-btn btn-info", "Restore", () => {restore(id)});
-        appendButton("delete-btn-3", "delete-btn btn-danger", "Delete", () => {del(id)});
+        appendButton("restore-btn-3", "restore-btn btn-info btn", "Restore", "Place this ad back in the pending queue", () => {restore(id)});
+        appendButton("delete-btn-3", "delete-btn btn-danger btn", "Delete", "Delete permanently this ad", () => {del(id)});
 
 
       break;
@@ -113,10 +113,20 @@ function del(id){
 }
 
 
-function delete_all(id){
+function delete_all_rejected(){
   //create service to delete ad that are rejected from some time
   if(confirm("Are you sure you want to delete all the ads in the queue? They will be removed permanently from the website!")){
-    requestForAction(id, "delete_all");
+    requestForAction(null, "delete_all_rejected");
+  }
+  else{}
+
+}
+
+
+function delete_all_outdated(){
+  //create service to delete ad that are rejected from some time
+  if(confirm("Are you sure you want to delete all the ads in the queue? They will be removed permanently from the website!")){
+    requestForAction(null, "delete_all_outdated");
   }
   else{}
 
@@ -164,9 +174,9 @@ function getID(adclass){
 * -button's text
 * -function to perform on click
 */
-function appendButton(id, clazz, caption, evt){
+function appendButton(id, clazz, caption, spantext, evt){
 
-  $('<input type="button" id="' + id + '" class ="' + clazz + '" value="' + caption + '">').appendTo("#contactsPanel");
+  $('<p><input type="button" id="' + id + '" class ="' + clazz + '" value="' + caption + '"><span> ' + spantext + ' </span></p>').appendTo("#contactsPanel");
   $("#" + id).click(evt);
 
 }
