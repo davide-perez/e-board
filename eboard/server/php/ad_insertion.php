@@ -52,7 +52,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 
 
 	// insert ad in database
-	$insert = mysqli_prepare($conn, "INSERT INTO ad (title, category, ad_text, status, date_published, 	date_until, user_id) VALUES (?, ?, ?, 1, ?, ?, ?)");
+	$insert = mysqli_prepare($conn, "INSERT INTO ad (title, category, ad_text, status, date_published, 	date_until, user_id) VALUES (?, ?, ?, 2, ?, ?, ?)");
     $cleanedDescr = cleanDescr($descr);
     $cleanedTitle = cleanDescr($title);
 	mysqli_stmt_bind_param($insert, "ssssss", $cleanedTitle, $cat, $cleanedDescr, $published, $until, $_SESSION["LOGIN"]);
@@ -61,17 +61,17 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
     $img_only = 0; //will be changed then
 
     if($_FILES["imgToUpload"]["size"] != 0) {
-    $fname = "img" . mysqli_insert_id($conn);
-	$uploader = new ImageLoader("imgToUpload", $fname);
 
-    if($uploader -> do_upload()){
+        $fname = "img" . mysqli_insert_id($conn);
+	    $uploader = new ImageLoader("imgToUpload", $fname);
 
-        $abspath = $uploader -> get_path();
-        $relpath = substr($abspath, strpos($abspath, "/eboard"));
+        if($uploader -> do_upload()){
+
+            $abspath = $uploader -> get_path();
+            $relpath = substr($abspath, strpos($abspath, "/eboard"));
         
 
-        
-
+    
 
         $insert_img = "INSERT INTO image (link, image_only, ad_id) VALUES(\"" . $relpath . "\", " . $img_only . " , " . mysqli_insert_id($conn) . ")";
 
