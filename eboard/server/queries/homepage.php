@@ -9,7 +9,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$conn = $db -> get_connection();
 
 
-	$sql = "SELECT title, ad_text, link, a.ad_id FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id";
+	$sql = "SELECT title, ad_text, link, a.ad_id FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND a.date_published > CURDATE() - INTERVAL 2 WEEK";
 	$result = mysqli_query($conn, $sql);
 
 	$data = array();
@@ -35,6 +35,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		$description = $res[1];
 		if(strlen($description) > 50){
 			$description = substr($description, 0, 47) . "...";
+			$description = str_replace("\\'", "'", $description);
 		}
 		
 		 return array("title" => $res[0], "description" => $description, "image" => $res[2], "id" => $res[3]);

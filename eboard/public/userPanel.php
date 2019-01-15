@@ -291,7 +291,7 @@
               <h4 class="card-title">
                 <?php echo '<a href="javascript:fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">' .   $res[0] . '</a>'; ?> 
               </h4>
-              <p class="card-text"> <?php echo $res[1]; ?> </p>
+              <p class="card-text"> <?php $newdesc = str_replace("\\'", "'", $res[1]);echo $newdesc;  ?> </p>
               <?php
                echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">Details</button>' ;
                 echo '<button type="button" class="btn btn-danger" id="delete_button" onclick="del(' . $res[7] . ')">Delete</button>';

@@ -33,7 +33,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	else {
 
 		// now insert the new user in the database and redirect to its profile page
-		$insert = mysqli_prepare($conn, "INSERT INTO standard_user (name, surname, username, password, mail, phone) VALUES (?, ?, ?, ?, ?, ?)");
+		$insert = mysqli_prepare($conn, "INSERT INTO standard_user (name, surname, username, password, mail, phone, banned) VALUES (?, ?, ?, ?, ?, ?, 0)");
 		mysqli_stmt_bind_param($insert, "ssssss", $name, $surname, $username, $pw, $email, $tel);
 		mysqli_stmt_execute($insert);
 
