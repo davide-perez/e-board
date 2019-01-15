@@ -43,35 +43,60 @@
     }
 
 
-    function getStatistics($conn){
+    /**
+    * Performs a query against the database and return info about the number of ads' states in form of an associative array.
+    */
+    function getAdStats($conn){
 
-      $keys = array('active', 'pending', 'rejected', 'outdated');
-      $values = array();
+      $keys = array('approved', 'pending', 'rejected', 'outdated');
+      $values = array(0, 0, 0, 0);
 
-      $stmt -> $conn -> prepare("SELECT a.status AS 'ad_status', COUNT(a.ad_id) AS 'count' FROM ad AS a GROUP BY status");
+      $stmt = $conn -> prepare("SELECT a.status AS 'ad_status', COUNT(a.ad_id) AS 'count' FROM ad AS a GROUP BY status");
       $stmt -> execute();
 
       $result = $stmt -> get_result();
 
+      while($res = mysqli_fetch_row($result)){
+
+        //arrays are 0-indexed, while ads' states get from 1 to 4
+        $values[$res[0] - 1] = $res[1];
+
+      }
+
+      return array_combine($keys, $values);
+
+    }
 
 
-      return $stmt -> get_result();
 
+    function getUserStats($conn){
+      $stmt = $conn -> prepare("SELECT count(*) FROM standard_user");
+      $stmt -> execute();
+      $result = $stmt -> get_result();
+      $num = 0;
+      while($res = mysqli_fetch_row($result)){
+        $num = $res[0];
+      }
+
+      return $num;
     }
 
 
     $db = new ConnectionFactory();
     $conn = $db -> get_connection();
-
-
+    $adstats = getAdStats($conn);
+    $userstats = getUserStats($conn);
 
 ?>
+
 
 <script>
 
   $(document).ready( _ => { setTabsCounter(); } );
 
 </script>
+
+
   <div id="container">
 
     <!-- HEADER-->
@@ -139,8 +164,13 @@
 <div id="middle" class="container">
 
   <div class="jumbotron">
-      <h1><span class="glyphicon glyphicon-pushpin"></span> Post your ad</h1> 
-      <p>Write your personal ad. Select the category, add images and insert all the information you want! Every ad needs to be accepted before being posted on the board. Please do not include sensitive information, offensive or off-topic contents.</p> 
+      <h1><span class="glyphicon glyphicon-pushpin"></span> E-Board stats</h1> 
+      <p>There are currently <?php echo $adstats["approved"] ?> ads approved and online.<br>
+       There are <?php echo $adstats["pending"] ?> ads that are waiting for your approval.<br>
+       <?php echo $adstats["outdated"] ?> ads have expired and are now eligible for permanent deletion.<br>
+       You rejected <?php echo $adstats["rejected"] ?> ads that are now eligible for permanent deletion.<br><br>
+       <?php echo $userstats ?> users are subscribed to this website.
+      </p> 
   </div>
 
 
