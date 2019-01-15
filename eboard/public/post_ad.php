@@ -41,7 +41,10 @@
 
   </script>
 
-  <?php session_start(); ?>
+  <?php session_start(); 
+  if(!isset($_SESSION["LOGIN"]))
+    echo '<script>window.location.href="/eboard/eboard/public/login.html"</script>';
+  ?>
 
   <!-- Main container-->
   <div id="container">

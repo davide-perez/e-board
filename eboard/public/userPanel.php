@@ -32,6 +32,8 @@
 
 <?php
   session_start();
+  if(!isset($_SESSION["LOGIN"]))
+    echo '<script>window.location.href="/eboard/eboard/public/login.html"</script>';
 
   require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
 

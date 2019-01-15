@@ -10,8 +10,19 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$username = $_POST["inputUsername"];
 	$pwd = md5($_POST["inputPassword"]);
 
+	// first control if it is an admin
 
+	$stmt_admin = mysqli_prepare($conn, "SELECT * FROM moderator WHERE username = ? AND password = ?");
+	mysqli_stmt_bind_param($stmt_admin, "ss", $username, $pwd);
+	mysqli_stmt_execute($stmt_admin);
+	$result_admin = mysqli_stmt_get_result($stmt_admin);
+	if($result_admin -> num_rows != 0) {
+		session_start();
+		$_SESSION["LOGIN_ADMIN"] = "true";
+		echo "admin";
+	} 
 
+	else {
 
 	$stmt = mysqli_prepare($conn, "SELECT * FROM standard_user WHERE username = ? AND password = ?");
 	mysqli_stmt_bind_param($stmt, "ss", $username, $pwd);
@@ -35,8 +46,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		echo 'correct';
 
 	}
-
 	$stmt->close();
+}
+
+	
 	$conn->close();
 
 
