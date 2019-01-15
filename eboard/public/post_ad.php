@@ -196,7 +196,7 @@
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-default btn-file">
-                    Browse… <input type="file" id="imgToUpload2" name="imgToUpload2" multiple>
+                    Browse… <input type="file" id="imgToUpload2" name="gallery[]" multiple>
                 </span>
             </span>
             <input type="text" class="form-control" readonly>

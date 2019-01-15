@@ -5,6 +5,36 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 
     session_start();
+
+    function do_upload_multiple($files, $id){
+
+        $count = 1;
+        $names = array();
+        foreach($_FILES[$files]['name'] as $filename){
+
+            $curr_fname = 'img' . $id . "-" . $count;
+            $parts = explode(".", $filename);
+            $newfilename = $curr_fname . '.' . end($parts);
+            $dest = $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/resources/ads/images/" . $newfilename;
+
+            if(!move_uploaded_file($_FILES[$files]['tmp_name'][$count - 1], $dest)){
+                echo "Error uploading some file in the gallery" . "<br>";
+            }
+            else{
+
+                array_push($names, $newfilename);
+
+            }
+
+            $count++;
+
+
+        }
+
+        return $names;
+
+    }
+
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
 
@@ -58,12 +88,14 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 	mysqli_stmt_bind_param($insert, "ssssss", $cleanedTitle, $cat, $cleanedDescr, $published, $until, $_SESSION["LOGIN"]);
 	mysqli_stmt_execute($insert);
 
+    $last_id = mysqli_insert_id($conn);
+
     $img_only = 0; //will be changed then
 
     if($_FILES["imgToUpload"]["size"] != 0) {
 
         $fname = "img" . mysqli_insert_id($conn);
-	    $uploader = new ImageLoader("imgToUpload", $fname);
+	    $uploader = new ImageLoader("imgToUpload", $fname, false);
 
         if($uploader -> do_upload()){
 
@@ -73,11 +105,11 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 
     
 
-        $insert_img = "INSERT INTO image (link, image_only, ad_id) VALUES(\"" . $relpath . "\", " . $img_only . " , " . mysqli_insert_id($conn) . ")";
+        $insert_img = "INSERT INTO image (link, image_only, ad_id) VALUES(\"" . $relpath . "\", " . $img_only . " , " . $last_id . ")";
 
         if($conn -> query($insert_img) === TRUE){
 
-            echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
+            //echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
 
         }
         else{
@@ -94,12 +126,12 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 }
 else {
 
-    $insert_img = "INSERT INTO image (link, image_only, ad_id) VALUES(\"" . $image . "\", " . $img_only . " , " . mysqli_insert_id($conn) . ")";
+    $insert_img = "INSERT INTO image (link, image_only, ad_id) VALUES(\"" . $image . "\", " . $img_only . " , " . $last_id. ")";
 
         if($conn -> query($insert_img) === TRUE){
 
 
-            echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
+            //echo '<script>document.location.href="/eboard/eboard/public/userPanel.php"</script>';
 
         }
         else{
@@ -107,8 +139,29 @@ else {
             echo "Error inserting image: " . mysqli_error($conn) . "<br>";
         }
     
-}
+    }
 
+
+if($_FILES['gallery']['size'] != 0){
+
+    $fnames = do_upload_multiple('gallery', $last_id);
+    print_r($fnames);
+
+    foreach ($fnames as $imgname) {
+        echo "Iterating on " . $imgname;
+        $insert_img = "INSERT INTO imagegallery (link, ad_id) VALUES(\"" . $imgname . "\", " . $last_id . ")";
+
+        $conn -> query($insert_img);
+        
+    }
+
+
+}
+else{
+
+    //no gallery
+
+}
 
 	
     $insert->close();
