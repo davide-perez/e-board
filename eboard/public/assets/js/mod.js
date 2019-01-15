@@ -11,9 +11,9 @@
   }
 
 
-  function setActions(adclass){
+  function setActions(adclass, id){
 
-  var id = getID(adclass);
+    console.log(id);
 
     switch(adclass){
 
@@ -157,13 +157,14 @@ function requestForAction(id, action){
 /**
 * Retrieves the id of an ad, given one of the four classnames ("approved, rejected, outdated, pending")
 *
-*/
+
 function getID(adclass){
 
   var id = $("#" + adclass + "-ads").find("tbody tr:first").children(":first").text();
     return id;
 
 }
+*/
 
 
 /**
@@ -175,8 +176,8 @@ function getID(adclass){
 * -function to perform on click
 */
 function appendButton(id, clazz, caption, spantext, evt){
-
-  $('<p><input type="button" id="' + id + '" class ="' + clazz + '" value="' + caption + '"><span> ' + spantext + ' </span></p>').appendTo("#contactsPanel");
+  
+  $('<p><input type="button" id="' + id + '" class ="' + clazz + '" value="' + caption + '"><span> ' + spantext + ' </span></p>').appendTo("#actionPanel");
   $("#" + id).click(evt);
 
 }

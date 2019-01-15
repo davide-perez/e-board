@@ -33,7 +33,10 @@ $('#login_button').click(function validate(event) {
                 alert("No user found with the inserted credentials");
                 
             }
-            else {
+            else if (response == "admin"){
+                window.location.href= "/eboard/eboard/server/php/moderator.php";
+            }
+            else  {
                 $form.submit();
             }
         });

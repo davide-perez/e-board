@@ -9,7 +9,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 	$conn = $db -> get_connection();
 
 
-	$sql = "SELECT title, ad_text, link, a.ad_id FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND a.date_published > CURDATE() - INTERVAL 2 WEEK";
+	$sql = "SELECT title, ad_text, link, a.ad_id FROM ad AS a INNER JOIN image AS i ON a.ad_id = i.ad_id AND a.date_published > CURDATE() - INTERVAL 2 WEEK AND a.status = 1";
 	$result = mysqli_query($conn, $sql);
 
 	$data = array();

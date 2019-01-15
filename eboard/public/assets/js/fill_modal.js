@@ -37,7 +37,7 @@ function fillModal (title, description, link, date_pub, username, mail, phone, i
   }
 
 
-function fillModalMod (title, description, link, username, adclass) {
+function fillModalMod (title, description, link, username, adclass, images, hasGallery, id) {
     
     $('#adTitle').html('<span class="glyphicon glyphicon-pushpin"></span> ' + title);
 
@@ -45,7 +45,33 @@ function fillModalMod (title, description, link, username, adclass) {
     $('#adDescription').html(description);
     $('#contactsPanel').html('<p class = "lead"><span class="glyphicon glyphicon-user"></span> Published by <b>' + username + '</b></p>');
     
-    setActions(adclass);
+    $('#actionPanel').html("");
+    setActions(adclass, id);
+
+    $('#photoGallery').remove();
+    $('#hrGallery').remove();
+    $('#myCarousel').remove();
+
+
+    if (hasGallery == "true" && $('#modalContainer').find($('#myCarousel')).length == 0) {
+
+        $('#galleryPanel').append('<h3 id = "photoGallery">Photo Gallery</h3><hr id = "hrGallery">');
+        $('#galleryPanel').append('<div id="myCarousel" class="carousel slide" data-ride="carousel"><ol class="carousel-indicators" id = "carousel-indicators"></ol><div class="carousel-inner" id = "carousel-inner"></div><a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></a></div><br>');
+
+        var single_image = images.split(" ");
+        for (x = 0; x < single_image.length; x++) {
+            if (x == 0) {
+                $('#carousel-indicators').append('<li data-target="#myCarousel" data-slide-to="0" class="active"></li>'); 
+                $('#carousel-inner').append('<div class="item active"><img src="'+single_image[x]+'" ></div>')
+            }
+            
+            else {
+                $('#carousel-indicators').append('<li data-target="#myCarousel" data-slide-to="' + x + '"></li>'); 
+                $('#carousel-inner').append('<div class="item"><img src="'+single_image[x]+'" ></div>')
+
+            }
+        }
+    }
 
     $('#adModal').modal('show');
     

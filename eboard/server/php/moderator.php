@@ -26,6 +26,8 @@
 <body>
 <?php
     session_start();
+    if(!isset($_SESSION["LOGIN_ADMIN"]))
+    echo '<script>window.location.href="/eboard/eboard/public/login.html"</script>';
 
     require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
 
@@ -133,26 +135,14 @@
           </ul>
 
 
-          <div class="col-sm-3 col-md-3">
-
-            <form class="navbar-form" role="search" action = "/eboard/eboard/public/ad_search.php" method = "post">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-
-            </div>
-            
-        </div>
-        </form>
-        </div>
+         
 
 
 
           <ul class="nav navbar-nav navbar-right">
             <li class = "active"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, admin!
             </a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+            <li><a href="/eboard/eboard/server/php/user_logout.php"><span class="glyphicon glyphicon-share"></span> Logout</a></li>
           </ul>
             
         </div><!--/.nav-collapse -->
@@ -201,7 +191,24 @@
         <tbody>
         <?php
           $result = selectWithStatus($conn, 1);
-          while($res = mysqli_fetch_row($result)) { 
+            while($res = mysqli_fetch_row($result)) { 
+
+            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery->bind_param('s', $res[0]);
+
+
+            $gallery->execute();
+            $resultGallery = $gallery->get_result();
+            $images = '';
+            if ($resultGallery -> num_rows != 0) {
+              $hasGallery = "true";
+              while($myimage = mysqli_fetch_row($resultGallery)) {
+                $images = $images . " " . $myimage[0];
+              }
+              $images = trim($images);
+            }
+            else
+              $hasGallery = "false";
         ?>
           <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
@@ -210,7 +217,7 @@
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'approved\')">' . 'Details </a>'; ?></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'approved\', \''.$images.'\', \''.$hasGallery.'\', \''. $res[0].'\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -238,6 +245,22 @@
         <?php
           $result = selectWithStatus($conn, 2);
           while($res = mysqli_fetch_row($result)) { 
+            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery->bind_param('s', $res[0]);
+
+
+            $gallery->execute();
+            $resultGallery = $gallery->get_result();
+            $images = '';
+            if ($resultGallery -> num_rows != 0) {
+              $hasGallery = "true";
+              while($myimage = mysqli_fetch_row($resultGallery)) {
+                $images = $images . " " . $myimage[0];
+              }
+              $images = trim($images);
+            }
+            else
+              $hasGallery = "false";
         ?>
           <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
@@ -246,7 +269,7 @@
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'pending\')">' . 'Details </a>'; ?></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'pending\', \''.$images.'\', \''.$hasGallery.'\', \''. $res[0].'\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -274,6 +297,22 @@
         <?php
           $result = selectWithStatus($conn, 4);
           while($res = mysqli_fetch_row($result)) { 
+            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery->bind_param('s', $res[0]);
+
+
+            $gallery->execute();
+            $resultGallery = $gallery->get_result();
+            $images = '';
+            if ($resultGallery -> num_rows != 0) {
+              $hasGallery = "true";
+              while($myimage = mysqli_fetch_row($resultGallery)) {
+                $images = $images . " " . $myimage[0];
+              }
+              $images = trim($images);
+            }
+            else
+              $hasGallery = "false";
         ?>
           <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
@@ -282,7 +321,7 @@
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'outdated\')">' . 'Details </a>'; ?></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'outdated\', \''.$images.'\', \''.$hasGallery.'\', \''. $res[0].'\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -312,6 +351,22 @@
         <?php
           $result = selectWithStatus($conn, 3);
           while($res = mysqli_fetch_row($result)) { 
+            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery->bind_param('s', $res[0]);
+
+
+            $gallery->execute();
+            $resultGallery = $gallery->get_result();
+            $images = '';
+            if ($resultGallery -> num_rows != 0) {
+              $hasGallery = "true";
+              while($myimage = mysqli_fetch_row($resultGallery)) {
+                $images = $images . " " . $myimage[0];
+              }
+              $images = trim($images);
+            }
+            else
+              $hasGallery = "false";
         ?>
           <tr class="clickable-row">
             <td><?php echo $res[0]; ?></td>
@@ -320,7 +375,7 @@
             <td><?php echo $res[3]; ?></td>
             <td><?php echo ucfirst($res[4]); ?></td>
             <td><?php echo $res[5]; ?></td>
-            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'rejected\')">' . 'Details </a>'; ?></td>
+            <td><?php echo '<a href="javascript:fillModalMod( \'' . $res[3] . '\', \'' . $res[7] . '\', \'' . $res[8] . '\', \''  . $res[1] . '\', \'rejected\', \''.$images.'\', \''.$hasGallery.'\', \''. $res[0].'\')">' . 'Details </a>'; ?></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -353,12 +408,20 @@
           <br>
           <p class = "lead" id = "adDescription">
           </p>
-          <br>
-          <h3>Actions</h3>
-          <hr>
           <div id = "contactsPanel">
           </div>
           <br>
+          <div id = "galleryPanel">
+          </div>
+          <h3>Actions</h3>
+          <hr>
+          <div id = "actionPanel">
+          </div>
+          <br>
+          
+          
+          
+          
 
 
         </div>
