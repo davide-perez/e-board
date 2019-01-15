@@ -6,8 +6,8 @@
 
 
 .jumbotron {
-	padding:50px;
-	background-image:url("/eboard/eboard/public/assets/images/jumbo.png"); 
+	padding:10px;
+	background-image:url("/eboard/eboard/public/assets/images/banner.jpg"); 
   	background-repeat:no-repeat; 
   	background-position:center; 
   	background-size:cover; 
