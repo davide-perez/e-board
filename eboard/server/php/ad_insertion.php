@@ -155,7 +155,7 @@ if($_FILES['gallery']['size'] != 0){
 
     foreach ($fnames as $imgname) {
         echo "Iterating on " . $imgname;
-        $insert_img = "INSERT INTO imagegallery (link, ad_id) VALUES(\"" . $imgname . "\", " . $last_id . ")";
+        $insert_img = "INSERT INTO image_gallery (link, ad_id) VALUES(\"".$default_dir . $imgname . "\", " . $last_id . ")";
 
         $conn -> query($insert_img);
         

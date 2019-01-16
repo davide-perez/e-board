@@ -193,7 +193,7 @@
           $result = selectWithStatus($conn, 1);
             while($res = mysqli_fetch_row($result)) { 
 
-            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery = $conn->prepare("SELECT link FROM image_gallery WHERE ad_id = ?" );
             $gallery->bind_param('s', $res[0]);
 
 
@@ -245,7 +245,7 @@
         <?php
           $result = selectWithStatus($conn, 2);
           while($res = mysqli_fetch_row($result)) { 
-            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery = $conn->prepare("SELECT link FROM image_gallery WHERE ad_id = ?" );
             $gallery->bind_param('s', $res[0]);
 
 
@@ -297,7 +297,7 @@
         <?php
           $result = selectWithStatus($conn, 4);
           while($res = mysqli_fetch_row($result)) { 
-            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery = $conn->prepare("SELECT link FROM image_gallery WHERE ad_id = ?" );
             $gallery->bind_param('s', $res[0]);
 
 
@@ -351,7 +351,7 @@
         <?php
           $result = selectWithStatus($conn, 3);
           while($res = mysqli_fetch_row($result)) { 
-            $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+            $gallery = $conn->prepare("SELECT link FROM image_gallery WHERE ad_id = ?" );
             $gallery->bind_param('s', $res[0]);
 
 

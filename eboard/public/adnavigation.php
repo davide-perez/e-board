@@ -163,7 +163,7 @@
       <div class="row">
 
       	<?php while($res = mysqli_fetch_row($result)) {
-          $gallery = $conn->prepare("SELECT link FROM imageGallery WHERE ad_id = ?" );
+          $gallery = $conn->prepare("SELECT link FROM image_gallery WHERE ad_id = ?" );
           $gallery->bind_param('s', $res[7]);
 
 
