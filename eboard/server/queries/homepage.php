@@ -33,12 +33,15 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php"
 		//add option to truncate the description if longer than x chars, adding ... at the end (blablablabla...)
 
 		$description = $res[1];
+		$title = $res[0];
 		if(strlen($description) > 50){
 			$description = substr($description, 0, 47) . "...";
 			$description = str_replace("\\'", "'", $description);
 		}
-		
-		 return array("title" => $res[0], "description" => $description, "image" => $res[2], "id" => $res[3]);
+
+		$title = str_replace("\\'", "'", $title);
+
+		 return array("title" => $title, "description" => $description, "image" => $res[2], "id" => $res[3]);
 
 	}
 

@@ -126,7 +126,17 @@ function delete_all_rejected(){
 function delete_all_outdated(){
   //create service to delete ad that are rejected from some time
   if(confirm("Are you sure you want to delete all the ads in the queue? They will be removed permanently from the website!")){
-    requestForAction(null, "delete_all_outdated");
+    requestForAction($_SESSION['login'], "delete_all_outdated");
+  }
+  else{}
+
+}
+
+
+
+function ban(){
+  if(confirm("Are you sure you want to ban this user? He will not be able to login or post ads.")){
+    requestForAction(null, "ban");
   }
   else{}
 

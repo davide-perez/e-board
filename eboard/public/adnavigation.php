@@ -31,6 +31,18 @@
 
 	require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/db/dbconnfactory.php";
 
+    function truncate_desc($description){
+
+      if(strlen($description) > 75){
+
+        $description = substr($description, 0, 72) . "...";
+
+      }
+
+      return $description;
+
+    }
+
 		$db = new ConnectionFactory();
 		$conn = $db -> get_connection();
 
@@ -190,7 +202,7 @@
               <h4 class="card-title">
                 <?php echo '<a href="javascript:fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">' .   $res[0] . '</a>'; ?> 
               </h4>
-              <p class="card-text"> <?php $newdesc = str_replace("\\'", "'", $res[1]);echo $newdesc; ?> </p>
+              <p class="card-text"> <?php $newdesc = str_replace("\\'", "'", $res[1]);echo truncate_desc($newdesc); ?> </p>
               <?php
                echo '<button type="button" class="btn btn-warning" id="details_button" onclick = "fillModal( \'' . $res[0] . '\', \'' . $res[1] . '\', \'' . $res[2] . '\', \'' .$res[3] . '\', \''  . $res[4] . '\', \'' . $res[5] . '\', \'' . $res[6] .  '\',\''. $images. '\', \''. $hasGallery.'\')">Details</button>' ;
               ?>
