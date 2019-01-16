@@ -6,8 +6,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 
     session_start();
 
-    function do_upload_multiple($files, $id){
-
+    function do_upload_multiple($files, $id, $dir){
         $count = 1;
         $names = array();
         foreach($_FILES[$files]['name'] as $filename){
@@ -15,7 +14,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
             $curr_fname = 'img' . $id . "-" . $count;
             $parts = explode(".", $filename);
             $newfilename = $curr_fname . '.' . end($parts);
-            $dest = $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/resources/ads/images/" . $newfilename;
+            $dest = $_SERVER['DOCUMENT_ROOT'] . $dir . $newfilename;
 
             if(!move_uploaded_file($_FILES[$files]['tmp_name'][$count - 1], $dest)){
                 echo "Error uploading some file in the gallery" . "<br>";
@@ -37,6 +36,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/php/img_loader.php";
 
 	$db = new ConnectionFactory();
 	$conn = $db -> get_connection();
+
+    $max_uploads = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/config.ini")["max_uploads"];
+    $default_dir = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/eboard/eboard/server/config.ini")["default_dir"];
 
     //img6-
 
@@ -143,8 +145,12 @@ else {
 
 
 if($_FILES['gallery']['size'] != 0){
+    if(count($_FILES['gallery']['name']) > $max_uploads){
 
-    $fnames = do_upload_multiple('gallery', $last_id);
+        throw new Exception("Upload file number per request exceeded.");
+
+    }
+    $fnames = do_upload_multiple('gallery', $last_id, $default_dir);
     print_r($fnames);
 
     foreach ($fnames as $imgname) {
