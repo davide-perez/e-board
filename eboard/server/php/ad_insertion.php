@@ -151,10 +151,8 @@ if($_FILES['gallery']['size'] != 0){
 
     }
     $fnames = do_upload_multiple('gallery', $last_id, $default_dir);
-    print_r($fnames);
 
     foreach ($fnames as $imgname) {
-        echo "Iterating on " . $imgname;
         $insert_img = "INSERT INTO image_gallery (link, ad_id) VALUES(\"".$default_dir . $imgname . "\", " . $last_id . ")";
 
         $conn -> query($insert_img);
@@ -168,6 +166,9 @@ else{
     //no gallery
 
 }
+
+
+echo '<script>alert("Thank you. Your ad has been submitted for approvation and will be pusblished once analyzed.");document.location.href="/eboard/eboard/public/homepage.php"</script>';
 
 	
     $insert->close();
