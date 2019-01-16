@@ -36,8 +36,11 @@
         
         addClickListeners();
         $("#imgToUpload2").on("change", function(){  
-          var numFiles = $(this).get(0).files.length
-          alert(numFiles);
+          var numFiles = $(this).get(0).files.length;
+          if(numFiles > 7){
+            alert("You can select at most 7 images for your ad gallery.");
+            $("#imgToUpload2").val('');
+          }
         });
         
 

@@ -147,7 +147,7 @@ function requestForAction(id, action){
   //do ajax stuff + redirect on the pending page
   //mail service please: https://stackoverflow.com/questions/15965376/how-to-configure-xampp-to-send-mail-from-localhost
   $.post('/eboard/eboard/server/php/management_service.php', {idVal: ad_id, command: action})
-  .done(function(msg){ alert("Done: " + msg); document.location.reload();})
+  .done(function(msg){ document.location.reload(); } )
   .fail(function(xhr, status, error) { alert("Request on" + ad_id + " failed with status " + status + ". Reason: " + error); });
 
 
