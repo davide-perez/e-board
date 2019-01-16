@@ -35,6 +35,10 @@
         
         
         addClickListeners();
+        $("#imgToUpload2").on("change", function(){  
+          var numFiles = $(this).get(0).files.length
+          alert(numFiles);
+        });
         
 
     });

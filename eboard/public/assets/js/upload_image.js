@@ -1,7 +1,7 @@
 
 $(document).ready( function() {
       $(document).on('change', '.btn-file :file', function() {
-    var input = $(this),
+        var input = $(this),
       label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     input.trigger('fileselect', [label]);
     });
